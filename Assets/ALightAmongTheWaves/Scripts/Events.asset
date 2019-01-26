@@ -1,0 +1,103 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 892edb3af81419544bfcef57c32e86e2, type: 3}
+  m_Name: Events
+  m_EditorClassIdentifier: 
+  events:
+  - id: 0
+    name: Accueil(Default)
+    about: "Un fr\xEAle esquif s'approche avec quelques membres en son sein. Ils semblent
+      int\xE9ress\xE9s \xE0 monter \xE0 bord et pr\xE9pare d\xE9j\xE0 leurs ressources."
+    choice:
+    - text: "Faire monter \xE0 bord"
+      dataConsequence: 1
+      consequence: 5
+    - text: Donner de la nourriture
+      dataConsequence: 5
+      consequence: 1
+    weight: 50
+  - id: 1
+    name: "Accueil(Naufrag\xE9s)"
+    about: "Une personne ballot\xE9 entre les vagues se dirige dangereusement vers
+      la coque du navire et semble s'\xE9vanouir."
+    choice:
+    - text: Venir en aide
+      dataConsequence: 1
+      consequence: 5
+    - text: Faire un radeau de sauvetage
+      dataConsequence: 5
+      consequence: 3
+    weight: 40
+  - id: 5
+    name: Tempest
+    about: "De violentes rafales provoque une mer agit\xE9e. Au loin, un mur d'eau
+      commence \xE0 s'\xE9lever. Pas de doute, le bateau, sa flamme risque de perdre
+      son bois et de voir ses voiles d\xE9chir\xE9es si rien n'est fait."
+    choice:
+    - text: "Prot\xE9ger le bateau"
+      dataConsequence: 10
+      consequence: 3
+    - text: "Tentez d'\xE9chapper au tsunami"
+      dataConsequence: 2
+      consequence: 2
+    weight: 20
+  - id: 21
+    name: pluie
+    about: "Les nuages au dessus de la caravelle deviennent subitement grises. Quelques
+      instants plus tard, une forte averse s'abat sur l'oc\xE9an."
+    choice:
+    - text: Continuer
+      dataConsequence: 0
+      consequence: 0
+    weight: 0
+  - id: 12
+    name: "D\xE9bris"
+    about: "Une fr\xE9gate se dessine entre plusieurs r\xE9cifs. Ses voiles sont en
+      lambeaux, ses compartiment perc\xE9 par les rochers et ses vivres tombent petit
+      \xE0 petits dans l'eau. Nul ne sait comment il as atteri ici, mais tout le monde
+      conna\xEEt son lots de provisions dans sa cale."
+    choice:
+    - text: "R\xE9cup\xE9rer les biens du vestige"
+      dataConsequence: 10
+      consequence: 6
+    - text: Continuer sa route
+      dataConsequence: 0
+      consequence: 0
+    weight: 30
+  - id: 10
+    name: "Pr\xEAtre bon"
+    about: "Une personne v\xEAtue d'une robe aux couleurs ocres et d'un collier de
+      pattes de lapin s'aproche \xE0 l'aide d'une barque. Il se l\xE8ve et crie dans
+      la direction du navire : \"L'aum\xF4ne our un pauvre homme de foi\". Il insiste
+      malgr\xE9 le silence."
+    choice:
+    - text: Donner de la monnaie
+      dataConsequence: 15
+      consequence: 4
+    - text: Donner biens
+      dataConsequence: 1
+      consequence: 3
+    weight: 20
+  - id: 17
+    name: "Pr\xEAtre mauvais"
+    about: "Un homme mal ras\xE9 et habill\xE9 d'une tunique jaune et d'un collier
+      de nouille s'approche \xE0 l'aide d'u radeau. Il se l\xE8ve et brame dans la
+      direction du navire : \"L'aum\xF4ne pour un homme de foi\". Il insiste lourdement
+      malgr\xE9 le silence."
+    choice:
+    - text: Donner de la monnaie
+      dataConsequence: 0
+      consequence: 0
+    - text: Donner des biens
+      dataConsequence: 5
+      consequence: 1
+    weight: 10
