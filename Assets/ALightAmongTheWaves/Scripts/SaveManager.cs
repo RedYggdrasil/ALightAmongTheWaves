@@ -5,6 +5,13 @@ using RedSpace;
 
 public class SaveManager : PersistentSingleton<SaveManager>
 {
+#if UNITY_EDITOR
+    [UnityEditor.MenuItem("ALATW/DeletePlayerPrefs")]
+    static void DeletePlayerPrefs()
+    {
+        PlayerPrefs.DeleteAll();
+    }
+#endif
     public static readonly string playerPrefKey;
 
     protected bool _haveAValidSave = false;
@@ -44,14 +51,23 @@ public class SaveManager : PersistentSingleton<SaveManager>
         }
         _haveAValidSave = ((_saveData = sd) != null);
     }
-    protected void ApplySaveToGame()
+    public void ApplySaveToGame()
     {
-
+        StorageManager.Instance.SetStorage(_saveData.storage);
+        TagContainer.Instance.SetTags(_saveData.progressionTags);
     }
-    protected void CreateNewSave()
+    public void CreateNewSave()
     {
         _saveData = new SaveData();
         _saveData.storage = StorageManager.Instance.CreateAStartStorage();
+        Debug.Log(_saveData.storage);
+        _saveData.progressionTags = TagContainer.Instance.CreateAStartTagList();
+    }
+    public void Save()
+    {
+        string json = JsonUtility.ToJson(_saveData);
+        Debug.Log(json);
+        PlayerPrefs.SetString(playerPrefKey, json);
     }
     protected bool CheckSaveValidity(string aSave)
     {
@@ -67,13 +83,21 @@ public class SaveManager : PersistentSingleton<SaveManager>
     }
     protected bool CheckSaveValidity(SaveData aSave)
     {
+        //Debug.Log("0");
         if (aSave != null)
         {
-            if(aSave.storage != null)
+            //Debug.Log("1");
+            if (aSave.storage != null)
             {
+                //Debug.Log("2");
                 if (aSave.storage.food != null && aSave.storage.wood != null && aSave.storage.population != null)
                 {
-                    return true;
+                    //Debug.Log("3");
+                    if (aSave.progressionTags != null)
+                    {
+                        //Debug.Log("return true");
+                        return true;
+                    }
                 }
             }
         }
@@ -94,5 +118,6 @@ public class SaveManager : PersistentSingleton<SaveManager>
 public class SaveData
 {
     public Storage storage;
+    public List<Consequence> progressionTags;
 
 }

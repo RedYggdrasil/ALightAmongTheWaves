@@ -36,17 +36,17 @@ public class StorageManager
     {
         Storage s = Storage.createNew();
         
-        s.food.Amount = 15;
         s.food.MinAmount = 0;
         s.food.MaxAmount = 30;
-        
-        s.wood.Amount = 15;
+        s.food.Amount = 15;
+
         s.wood.MinAmount = 0;
         s.wood.MaxAmount = 30;
-        
-        s.population.Amount = 0;
+        s.wood.Amount = 15;
+
         s.population.MinAmount = 0;
         s.population.MaxAmount = 10;
+        s.population.Amount = 1;
         return s;
     }
     public Storage GetStorageRefence()
@@ -54,6 +54,7 @@ public class StorageManager
         return _storage;
     }
 }
+[System.Serializable]
 public class Storage
 {
     public IResource[] resources;

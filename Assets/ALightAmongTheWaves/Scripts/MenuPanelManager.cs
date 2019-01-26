@@ -26,10 +26,20 @@ public class MenuPanelManager : MonoBehaviour
     public void OnContinueButtonCliked()
     {
         if (inAnimation) { return; }
+        LoadGameScene();
+        //Consequence.
     }
     public void OnNewGameButtonCliked()
     {
         if (inAnimation) { return; }
+        SaveManager.Instance.CreateNewSave();
+        SaveManager.Instance.Save();
+        LoadGameScene();
+
+    }
+    protected void LoadGameScene()
+    {
+        GameManager.Instance.LoadScene(GameManager.Scenes.Game);
     }
     public void OnOptionButtonCliked()
     {
