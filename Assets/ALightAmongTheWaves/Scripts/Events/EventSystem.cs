@@ -14,6 +14,7 @@ using UnityEngine;
         public string about;
         public List<Choice> choice; 
         public int weight;
+        public Consequence tag;
 
     }
 
