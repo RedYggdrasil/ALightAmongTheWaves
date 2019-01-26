@@ -8,7 +8,7 @@ public class EvenementHandler : Singleton<EvenementHandler>
 {
 
     public List<EventSystem> listeEvenements;
-    public System.Action<EvenmentConsequence> ToCallOnEndEvent = null;
+    public System.Action<EventConsequence> ToCallOnEndEvent = null;
     private EventSystem eveneSelected;
 
     public EventSystem EveneSelected { get => eveneSelected; set => eveneSelected = value; }
@@ -46,20 +46,6 @@ public class EvenementHandler : Singleton<EvenementHandler>
     }
 
 
-    [System.Serializable]
-    public class EvenmentConsequence
-    {
-        public List<TagChange> tagChanges;
-        public int foodChange;
-        public int woodChange;
-        public int populationChange;
-    }
-    [System.Serializable]
-    public class TagChange
-    {
-        public bool isAnAddition;
-        public Consequence tag;
-    }
 
 
     public void GetEvenementParPoids() 

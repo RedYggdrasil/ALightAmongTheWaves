@@ -4,29 +4,30 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Assets.ALightAmongTheWaves.Scripts.Events
-{
     [Serializable]
     public class Choice
     {
         public string text;
-        //protected int food;
-        //protected int survivor;
-        //protected int wood;
-        public int dataConsequence;      
-        public Consequence consequence;
+        public EventConsequence eventConsequence;
 
-        public Choice(int d,string txt, Consequence c)
+        public Choice(string txt, EventConsequence e)
         {
-            dataConsequence = d;
-            consequence = c;
+            eventConsequence = e;
             text = txt;
         }
 
-        public Choice()
-        {
-
-        }
-
     }
-}
+    [System.Serializable]
+    public class EventConsequence
+    {
+        public List<TagChange> tagChanges;
+        public int foodChange;
+        public int woodChange;
+        public int populationChange;
+    }
+    [System.Serializable]
+    public class TagChange
+    {
+        public bool isAnAddition;
+        public Consequence tag;
+    }

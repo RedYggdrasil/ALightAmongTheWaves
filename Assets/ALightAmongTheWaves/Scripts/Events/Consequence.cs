@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 public enum Consequence
 {
     NOTHING = 0,
-    REDUCE_FOOD = 1,
-    REDUCE_SURVIVORS = 2,
-    REDUCE_WOOD = 3,
-    INCREASE_FOOD = 4,
-    INCREASE_SURVIVORS = 5,
-    INCREASE_WOOD = 6
+    JAPONAIS = 1,
+    SUSHISHOP = 2,
+    CHARPENTIER = 3,
+    METEOROLOGUE = 4,
+    PERROQUET = 5,
+    BIBLIOTHECAIRE = 6
 }
