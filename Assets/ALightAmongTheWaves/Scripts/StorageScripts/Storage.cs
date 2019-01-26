@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//public static class StorageManager
 public static class Storage
 {
     public static IResource[] resources;
