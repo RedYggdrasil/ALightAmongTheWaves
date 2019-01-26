@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using RedSpace;
 
 public class MenuPanelManager : MonoBehaviour
 {
@@ -37,6 +38,7 @@ public class MenuPanelManager : MonoBehaviour
     public void OnQuitButtonCliked()
     {
         if (inAnimation) { return; }
+        QuitTool.Quit();
     }
     protected virtual void Awake()
     {
@@ -62,7 +64,7 @@ public class MenuPanelManager : MonoBehaviour
         onClosedPanel = OnClosedPanelCallback;
 
         //quitPanelButton.gameObject.SetActive(false);
-        continueButton.interactable = false;
+        continueButton.interactable = SaveManager.Instance.haveAValidSave;
         StartCoroutine(FadePanelTo(1f, OnPanelOpened));
     }
     public void ClosePanel()
