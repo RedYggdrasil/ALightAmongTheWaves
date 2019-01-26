@@ -70,8 +70,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moduleGridSystem: {fileID: 807937175343523271}
-  modulePrefab: {fileID: 4867837940956643339, guid: aadf2b6facc516246a5c42705dac5317,
-    type: 3}
+  modulePrefab:
+  - {fileID: 4867837940956643339, guid: aadf2b6facc516246a5c42705dac5317, type: 3}
+  - {fileID: 4867837940956643339, guid: a42d41bca83d02749b0758552c3180fe, type: 3}
+  - {fileID: 4867837940956643339, guid: 63b43488619c45a43bb38ad8c06c8d17, type: 3}
+  - {fileID: 4867837940956643339, guid: e3a5247dabc7b79469b147bacee94953, type: 3}
+  modulePhantom: {fileID: 0}
 --- !u!1 &3581778209513973795
 GameObject:
   m_ObjectHideFlags: 0

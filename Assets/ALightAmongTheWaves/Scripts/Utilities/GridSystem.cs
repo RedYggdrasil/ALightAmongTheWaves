@@ -29,8 +29,7 @@ public class GridSystem : MonoBehaviour
             for (int i = 0; i < currentHeight; ++i)
             {
                 grid.Add(new GameObject[nbCellByLine]);
-                gridOverlay.Add(new GameObject[nbCellByLine]);
-                AddOverlayLine((uint)i);                
+                AddOverlayLine();                
             }
     }
 
@@ -48,12 +47,10 @@ public class GridSystem : MonoBehaviour
     [NaughtyAttributes.Button]
     public void AddALine()
     {
-        grid.Add(new GameObject[nbCellByLine]);
-
-        gridOverlay.Add(new GameObject[nbCellByLine]);
-        AddOverlayLine((uint)gridOverlay.Count - 1);        
-
         currentHeight++;
+        grid.Add(new GameObject[nbCellByLine]);
+        AddOverlayLine();
+
         heightChangeEvent?.Invoke();
     }
 
@@ -83,8 +80,14 @@ public class GridSystem : MonoBehaviour
 
         gameObject.transform.position = GetPositionForCellIndex(cellIndex);
 
-        grid[cellIndex.y][cellIndex.x] = gameObject;
-        gridOverlay[cellIndex.y][cellIndex.x].SetActive(false);
+        Vector2Int moduleSize = gameObject.GetComponent<ShipModule>().moduleSize;
+
+        for(int i=0; i< moduleSize.x; ++i)
+            for(int j=0; j< moduleSize.y; ++j)
+            {
+                grid[cellIndex.y+j][cellIndex.x+i] = gameObject;
+                gridOverlay[cellIndex.y+j][cellIndex.x+i].SetActive(false);
+            }
     }
 
     public void PutGameObjectOnPosition(GameObject gameObject, Vector2 position)
@@ -99,8 +102,14 @@ public class GridSystem : MonoBehaviour
 
         gameObject.transform.position = GetPositionForCellIndex(cellIndex);
 
-        grid[cellIndex.y][cellIndex.x] = gameObject;
-        gridOverlay[cellIndex.y][cellIndex.x].SetActive(false);
+        Vector2Int moduleSize = gameObject.GetComponent<ShipModule>().moduleSize;
+
+        for (int i = 0; i < moduleSize.x; ++i)
+            for (int j = 0; j < moduleSize.y; ++j)
+            {
+                grid[cellIndex.y + j][cellIndex.x + i] = gameObject;
+                gridOverlay[cellIndex.y + j][cellIndex.x + i].SetActive(false);
+            }
     }
 
     public GameObject GetGameObjectFormCellIndex(Vector2Int cellIndex)
@@ -109,6 +118,21 @@ public class GridSystem : MonoBehaviour
             return null;
 
         return grid[cellIndex.y][cellIndex.x];
+    }
+
+    public bool CanPLaceModule(Vector2Int modulePosition, Vector2Int moduleSize)
+    {
+        bool canPlaceModule = true;
+
+        for (int i = 0; i < moduleSize.x; ++i)
+            for (int j = 0; j < moduleSize.y; ++j)
+            {
+                canPlaceModule = GetGameObjectFormCellIndex(new Vector2Int(modulePosition.x + i, modulePosition.y + j)) == null;
+                if (!canPlaceModule)
+                    return false;
+            }
+
+        return canPlaceModule;
     }
 
     //-------------------------------------------------------------------------------//
@@ -155,9 +179,13 @@ public class GridSystem : MonoBehaviour
 
     //---------------------------------------------------------------------------------//
 
-    void AddOverlayLine(uint height)
+    void AddOverlayLine()
     {
-        uint nbBoatCell = NbBoatCellInLineByHeight((uint)height);
+        gridOverlay.Add(new GameObject[nbCellByLine]);
+
+        uint height = (uint)gridOverlay.Count - 1;
+
+        uint nbBoatCell = NbBoatCellInLineByHeight(height);
 
         int minArea = (int)(nbCellByLine * 0.5f) - (int)(nbBoatCell * 0.5f);
         int maxArea = (int)(nbCellByLine * 0.5f) + (int)(nbBoatCell * 0.5f);
