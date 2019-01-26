@@ -1,99 +1,173 @@
-﻿using System.Collections;
+﻿using NaughtyAttributes;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class GridSystem : MonoBehaviour
 {
+    public System.Action heightChangeEvent;
+
     public uint cellSize = 1;
-    readonly public uint nbCellByLine = 13;
+    readonly public uint nbCellByLine = 17;
     public uint currentHeight { get; private set; } = 3;
 
     [HideInInspector]
     public Vector2 gridOrigin = new Vector2(0, 0);
 
-    public List<GameObject> grid = new List<GameObject>();
+    public List<GameObject[]> grid = new List<GameObject[]>();
+    public List<GameObject[]> gridOverlay = new List<GameObject[]>();
 
-    public uint NbBoatCellInLineByHeight(uint HeightLine)
-    {
-        if (HeightLine == 0)
-            return 5;
-        return 5 + (uint)(Mathf.Log(HeightLine * 2f) * 1.65f)*2;
-    }
+    public Transform moduleContainer, overlayContainer;
+
+    public GameObject gridOverlaySprite;
 
     private void Awake()
     {
-        if (grid.Count == 0)
-            for (int i = 0; i < (nbCellByLine-1) * currentHeight; ++i)
-                grid.Add(null);
+        gridOrigin = moduleContainer.position;
 
-        gridOrigin = transform.position;
+        if (grid.Count == 0)
+            for (int i = 0; i < currentHeight; ++i)
+            {
+                grid.Add(new GameObject[nbCellByLine]);
+                gridOverlay.Add(new GameObject[nbCellByLine]);
+                AddOverlayLine((uint)i);                
+            }
     }
 
     public bool isInGrid(Vector2 position)
     {
-        if (position.y < gridOrigin.y || position.x < gridOrigin.x || position.x > gridOrigin.x + cellSize * (nbCellByLine))
-            return false;
-
-        return position.y <= gridOrigin.y + cellSize * (currentHeight);
+        return position.y >= gridOrigin.y && position.y < gridOrigin.y + cellSize * (currentHeight)
+            && position.x >= gridOrigin.x && position.x < gridOrigin.x + cellSize * (nbCellByLine);
     }
 
+    public bool isInGrid(Vector2Int cellIndex)
+    {
+        return cellIndex.x >= 0 && cellIndex.x < nbCellByLine && cellIndex.y >= 0 && cellIndex.y < currentHeight;
+    }
+
+    [NaughtyAttributes.Button]
     public void AddALine()
     {
-        for (int i = 0; i < nbCellByLine; ++i) grid.Add(null);
+        grid.Add(new GameObject[nbCellByLine]);
+
+        gridOverlay.Add(new GameObject[nbCellByLine]);
+        AddOverlayLine((uint)gridOverlay.Count - 1);        
+
+        currentHeight++;
+        heightChangeEvent?.Invoke();
     }
 
-    public int GetCellIndexFromPosition(Vector2 position)
+    public Vector2Int GetCellIndexFromPosition(Vector2 position)
     {
-        if (position.y < gridOrigin.y || position.x < gridOrigin.x || position.x > gridOrigin.x + cellSize * (nbCellByLine))
-            return -1;
-
-        int line = (int)((position.y - gridOrigin.y) / cellSize);
-        int column = (int)((position.x - gridOrigin.x) / cellSize);
-
-        return column + (line * (int)nbCellByLine) ;
+        if (!isInGrid(position))
+            return new Vector2Int(-1,-1);
+        
+        return new Vector2Int((int)((position.x - gridOrigin.x) / cellSize), (int)((position.y - gridOrigin.y) / cellSize));
     }
 
-    public Vector2 GetPositionForCellIndex(uint cellIndex)
+    public Vector2 GetPositionForCellIndex(Vector2Int cellIndex)
     {
-        return gridOrigin + new Vector2((0.5f + cellIndex % nbCellByLine) * cellSize, (0.5f + cellIndex / nbCellByLine ) * cellSize);
-    }
-
-    public void PutGameObjectInCellIndex(GameObject gameObject, uint cellIndex)
-    {
-        if (cellIndex > grid.Count)
+        if (!isInGrid(cellIndex))
             throw new System.IndexOutOfRangeException();
 
-        gameObject.transform.SetParent(this.transform, false);
+        return gridOrigin + new Vector2((0.5f + cellIndex.x) * cellSize, (0.5f + cellIndex.y ) * cellSize);
+    }
+
+    public void PutGameObjectInCellIndex(GameObject gameObject, Vector2Int cellIndex)
+    {
+        if (!isInGrid(cellIndex))
+            throw new System.IndexOutOfRangeException();
+
+        gameObject.transform.SetParent(moduleContainer, false);
         gameObject.transform.localScale = Vector3.one;
 
         gameObject.transform.position = GetPositionForCellIndex(cellIndex);
 
-        grid[(int)cellIndex] = gameObject;
+        grid[cellIndex.y][cellIndex.x] = gameObject;
+        gridOverlay[cellIndex.y][cellIndex.x].SetActive(false);
     }
 
     public void PutGameObjectOnPosition(GameObject gameObject, Vector2 position)
     {
-        int cellIndex = GetCellIndexFromPosition(position);
+        Vector2Int cellIndex = GetCellIndexFromPosition(position);
 
-        if (cellIndex == -1)
-            return;
-
-        if (cellIndex > grid.Count)
+        if (!isInGrid(cellIndex))
             throw new System.IndexOutOfRangeException();
 
-        gameObject.transform.SetParent(this.transform, false);
+        gameObject.transform.SetParent(moduleContainer, false);
         gameObject.transform.localScale = Vector3.one;
 
-        gameObject.transform.position = GetPositionForCellIndex((uint)cellIndex);
+        gameObject.transform.position = GetPositionForCellIndex(cellIndex);
 
-        grid[(int)cellIndex] = gameObject;
+        grid[cellIndex.y][cellIndex.x] = gameObject;
+        gridOverlay[cellIndex.y][cellIndex.x].SetActive(false);
     }
 
-    public GameObject GetGameObjectFormCellIndex(uint cellIndex)
+    public GameObject GetGameObjectFormCellIndex(Vector2Int cellIndex)
     {
-        if (cellIndex > grid.Count)
-            throw new System.IndexOutOfRangeException();
+        if (!isInGrid(cellIndex))
+            return null;
 
-        return grid[(int)cellIndex];
+        return grid[cellIndex.y][cellIndex.x];
+    }
+
+    //-------------------------------------------------------------------------------//
+
+    public uint NbBoatCellInLineByHeight(uint heightLine)
+    {
+        if (heightLine == 0)
+            return 5;
+
+        uint nbCellOnLine = 5 + (uint)(Mathf.Log(heightLine * 2f) * 1.65f) * 2;
+
+        if (nbCellOnLine > nbCellByLine)
+            return nbCellByLine;
+        else
+            return nbCellOnLine;
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="height"></param>
+    /// <returns>Vector2.x = min; Vector2.y = max</returns>
+    public Vector2Int BoatAreaInLine(uint height)
+    {
+        if (height >= currentHeight)
+            return Vector2Int.zero;
+
+        uint nbBoatCell = NbBoatCellInLineByHeight(height);
+
+        return new Vector2Int((int)(nbCellByLine * 0.5f) - (int)(nbBoatCell * 0.5f), (int)(nbCellByLine * 0.5f) + (int)(nbBoatCell * 0.5f));
+    }
+
+    public bool IsInBoat(Vector2 position)
+    {
+        if (!isInGrid(position))
+            return false;
+
+        Vector2Int index = GetCellIndexFromPosition(position);
+
+        Vector2Int boatArea = BoatAreaInLine((uint)index.y);
+
+        return index.x >= boatArea.x && index.x <= boatArea.y;
+    }
+
+    //---------------------------------------------------------------------------------//
+
+    void AddOverlayLine(uint height)
+    {
+        uint nbBoatCell = NbBoatCellInLineByHeight((uint)height);
+
+        int minArea = (int)(nbCellByLine * 0.5f) - (int)(nbBoatCell * 0.5f);
+        int maxArea = (int)(nbCellByLine * 0.5f) + (int)(nbBoatCell * 0.5f);
+
+        for (int j = minArea; j <= maxArea; ++j)
+        {
+            gridOverlay[(int)height][j] = GameObject.Instantiate(gridOverlaySprite, overlayContainer);
+            gridOverlay[(int)height][j].transform.localScale = Vector3.one;
+
+            gridOverlay[(int)height][j].transform.position = GetPositionForCellIndex(new Vector2Int(j, (int)height));
+        }
     }
 }

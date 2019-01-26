@@ -21,7 +21,7 @@ public class PlaceShipModule : MonoBehaviour
                 
         if (Input.GetMouseButtonDown(0))
         {
-            if (moduleGridSystem.isInGrid(mouseInWorldSpace))
+            if (moduleGridSystem.IsInBoat(mouseInWorldSpace))
                 moduleGridSystem.PutGameObjectOnPosition( GameObject.Instantiate(modulePrefab), mouseInWorldSpace);
 
         }
