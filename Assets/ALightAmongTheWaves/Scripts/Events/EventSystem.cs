@@ -8,7 +8,7 @@ using UnityEngine;
 namespace Assets.ALightAmongTheWaves.Scripts.Events
 {
     [Serializable]
-    public class Event
+    public class EventSystem
     {
         public int id;
         public string name;

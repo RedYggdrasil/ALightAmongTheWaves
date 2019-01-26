@@ -10,7 +10,7 @@ namespace Assets.ALightAmongTheWaves.Scripts.Events
     [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/ScriptableEvent", order = 1)]
     public class ScriptableEvent : ScriptableObject
     {
-        public List<Event> events;
+        public List<EventSystem> events;
 
     }
 
