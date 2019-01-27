@@ -19,7 +19,7 @@ public class EvenementHandler : Singleton<EvenementHandler>
     public Canvas canv;
 
     public Transform buttonsContainer;
-    public Transform textContainer;
+    public TextMeshProUGUI textContainer;
 
     public EventSystem EventSelected { get => eventSelected; set => eventSelected = value; }
 
@@ -61,11 +61,14 @@ public class EvenementHandler : Singleton<EvenementHandler>
 
     public void StartEventNow()
     {
-        for(int i = 0;  i < eventSelected.choice.Count; ++i)
+        canv.gameObject.SetActive(true);
+        textContainer.text = eventSelected.about;
+        for (int i = 0;  i < eventSelected.choice.Count; ++i)
         {
-            GameObject buttonInstanciate = GameObject.Instantiate(buttonChoisePrefab.gameObject);
-            buttonInstanciate.GetComponent<Button>().onClick.AddListener( () => { ChoiseActivate(i); } );
-            buttonInstanciate.GetComponent<TextMeshProUGUI>().text = eventSelected.choice[i].text;
+            GameObject buttonInstanciate = GameObject.Instantiate(buttonChoisePrefab.gameObject, buttonsContainer);
+            buttonInstanciate.name = "" + i;
+            buttonInstanciate.GetComponent<Button>().onClick.AddListener( () => { ChoiseActivate(Int32.Parse(buttonInstanciate.name)); } );
+            buttonInstanciate.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = eventSelected.choice[i].text;
             buttons.Add(buttonInstanciate);
         }
     }
@@ -73,13 +76,17 @@ public class EvenementHandler : Singleton<EvenementHandler>
 
     public void ChoiseActivate (int i)
     {
-        for(int j = buttons.Count-1;  j>=0; --j)
+        StartCoroutine(ChooseActivateCoroutine(i));
+    }
+    private IEnumerator ChooseActivateCoroutine(int i)
+    {
+        yield return new WaitForEndOfFrame();
+        for (int j = buttons.Count - 1; j >= 0; --j)
         {
             GameObject.Destroy(buttons[j]);
         }
         buttons.Clear();
-
-        GameObject.Destroy(canv);
+        canv.gameObject.SetActive(false);
         callbackTemp(eventSelected.choice[i].eventConsequence);
     }
 
