@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class ShipModule : MonoBehaviour
 {
+    public Consequence unlockCondition;
+
     public Vector2Int moduleSize = new Vector2Int(1,1);
 
     public enum ShipModuleAction { kPopulationMax, kFoodIncome, kFoodMax, kWoodIncome, kWoodMax, kProductionBonus}
@@ -33,6 +35,18 @@ public class ShipModule : MonoBehaviour
     private void OnDestroy()
     {
         DeactivateModule();
+    }
+
+    public bool IsUnlock(List<Consequence> consequences)
+    {
+        if (unlockCondition == Consequence.NOTHING)
+            return true;
+
+        foreach (Consequence consequence in consequences)
+            if (consequence == unlockCondition)
+                return true;
+
+        return false;
     }
 
     public void ActivateModule()
@@ -107,7 +121,7 @@ public class ShipModule : MonoBehaviour
         }
     }
 
-    internal void Boost(int actionValueBoost)
+    public void Boost(int actionValueBoost)
     {
         for(int i= moduleActions.Length-1; i>= 0; --i )
         {

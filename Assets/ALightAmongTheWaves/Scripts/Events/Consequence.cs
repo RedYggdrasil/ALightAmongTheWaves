@@ -12,5 +12,6 @@ public enum Consequence
     CHARPENTIER = 3,
     METEOROLOGUE = 4,
     PERROQUET = 5,
-    BIBLIOTHECAIRE = 6
+    BIBLIOTHECAIRE = 6,
+    HEIGHT_5_REACH = 7
 }

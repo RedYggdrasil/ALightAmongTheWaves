@@ -12,23 +12,54 @@ public class ShipPartSelectorUI : MonoBehaviour
 
     public PlaceShipModule placeShipModule;
     public ShipModule[] shipParts;
+    public Button[] shipPartsButton;
 
-    //public List<part>
+    private TagContainer _tagContainer;
 
     // Start is called before the first frame update
     void Start()
     {
-        foreach(ShipModule shipModule in shipParts)
+        _tagContainer = TagContainer.Instance;
+
+        shipPartsButton = new Button[shipParts.Length];
+
+        int i = 0;
+        foreach (ShipModule shipModule in shipParts)
         {
-            GameObject button = GameObject.Instantiate(partButtonPrefab.gameObject, panelPartTransform);
-            button.GetComponentInChildren<TextMeshProUGUI>().text = shipModule.name;
-            button.GetComponent<Button>().onClick.AddListener(() => {
+            GameObject buttonGamebject = GameObject.Instantiate(partButtonPrefab.gameObject, panelPartTransform);
+            buttonGamebject.GetComponentInChildren<TextMeshProUGUI>().text = shipModule.name;
+
+            Button button = buttonGamebject.GetComponent<Button>();
+
+            shipPartsButton[i++] = button;
+
+            button.onClick.AddListener(() => {
                 placeShipModule.SetShipPartToPlace(GameObject.Instantiate(shipModule.gameObject).GetComponent<ShipModule>());
                 panelPartTransform.gameObject.SetActive(false);
             });
         }
 
         menuButton.onClick.AddListener(() => panelPartTransform.gameObject.SetActive(!panelPartTransform.gameObject.activeSelf));
+
+        UpdateUnlockShipPart();
+        _tagContainer.onTagsUpdate += UpdateUnlockShipPart;
+    }
+
+    private void OnDestroy()
+    {
+        _tagContainer.onTagsUpdate += UpdateUnlockShipPart;
+    }
+
+    void UpdateUnlockShipPart()
+    {
+        List<Consequence> consequences = _tagContainer.GetTagListRefence();
+
+        int i = 0;
+        foreach (ShipModule shipModule in shipParts)
+        {
+            Button shipPartButton = shipPartsButton[i++];
+            shipPartButton.interactable = shipModule.IsUnlock(consequences);
+        }
     }
 
 }

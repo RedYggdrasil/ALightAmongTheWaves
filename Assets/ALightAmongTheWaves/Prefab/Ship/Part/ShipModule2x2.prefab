@@ -92,4 +92,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 601e2bfd9d6fde64f979ab1e203e8782, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unlockCondition: 7
   moduleSize: {x: 2, y: 2}
+  moduleActions: []
+  cost:
+    woodCost: 0
+    foodCost: 0
+    freePeopleCost: 0

@@ -91,16 +91,22 @@ public class Ship : Singleton<Ship>
         shipMattFireSpotGO.GetComponent<ShipModule>().ActivateModule();
         gridShip.PutGameObjectInCellIndex(shipMattFireSpotGO, new Vector2Int((int)(gridShip.nbCellByLine * 0.5f), 3));
 
-        gridShip.newBuildableLineAddedEvent += shipMattGrow;
+        gridShip.newBuildableLineAddedEvent += ShipMattGrow;
     }
 
     private void OnDestroy()
     {
-        gridShip.newBuildableLineAddedEvent -= shipMattGrow;
+        gridShip.newBuildableLineAddedEvent -= ShipMattGrow;
     }
 
-    void shipMattGrow()
+    void ShipMattGrow()
     {
+        if (gridShip.currentBuildableHeight == 5)
+        {
+            TagContainer.Instance.tags.Add(Consequence.HEIGHT_5_REACH);
+            TagContainer.Instance.TagUpdated();
+        }
+
         gridShip.RemoveGameObjectOnPosition(shipMattFireSpotGO.transform.position);
         gridShip.PutGameObjectInCellIndex(GameObject.Instantiate(shipModuleMattPrefab), 
             new Vector2Int((int)(gridShip.nbCellByLine * 0.5f), (int)gridShip.currentBuildableHeight-2));
