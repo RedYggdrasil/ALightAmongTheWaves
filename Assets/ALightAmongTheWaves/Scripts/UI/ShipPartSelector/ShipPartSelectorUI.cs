@@ -31,6 +31,9 @@ public class ShipPartSelectorUI : MonoBehaviour
 
             Button button = buttonGamebject.GetComponent<Button>();
 
+            button.transform.Find("wood price").GetComponent<TextMeshProUGUI>().text = shipModule.cost.woodCost.ToString();
+            button.transform.Find("men price").GetComponent<TextMeshProUGUI>().text = shipModule.cost.freePeopleCost.ToString();
+
             shipPartsButton[i++] = button;
 
             button.onClick.AddListener(() => {
