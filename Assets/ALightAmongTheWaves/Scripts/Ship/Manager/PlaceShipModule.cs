@@ -45,6 +45,7 @@ public class PlaceShipModule : MonoBehaviour
                 {
                     shipPart.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
                     shipPart.GetComponent<SpriteRenderer>().sortingOrder = 0;
+                    shipPart.GetComponent<ShipModule>().ActivateModule();
                     moduleGridSystem.PutGameObjectOnPosition(shipPart.gameObject, mouseInWorldSpace);
                     shipPart = null;
                 }

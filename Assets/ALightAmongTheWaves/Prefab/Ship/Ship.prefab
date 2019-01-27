@@ -71,11 +71,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moduleGridSystem: {fileID: 807937175343523271}
-  modulePrefab:
-  - {fileID: 4867837940956643339, guid: aadf2b6facc516246a5c42705dac5317, type: 3}
-  - {fileID: 4867837940956643339, guid: a42d41bca83d02749b0758552c3180fe, type: 3}
-  - {fileID: 4867837940956643339, guid: 63b43488619c45a43bb38ad8c06c8d17, type: 3}
-  - {fileID: 4867837940956643339, guid: e3a5247dabc7b79469b147bacee94953, type: 3}
 --- !u!114 &3530733518876017441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -95,6 +90,17 @@ MonoBehaviour:
     type: 3}
   shipModuleHold6Prefab: {fileID: 4867837940956643339, guid: 83d36baf94dbd79499e285ec07263fad,
     type: 3}
+  shipModuleMattPrefab: {fileID: 4867837940956643339, guid: a4b59bca012182c468fa5f136de8c7d0,
+    type: 3}
+  shipModuleMattFireSpotPrefab: {fileID: 4867837940956643339, guid: a54c08a885e00ca46a62153362fd87bf,
+    type: 3}
+  shipEconomy:
+    foodIncome: 0
+    foodMax: 0
+    woodIncome: 0
+    woodMax: 0
+    maxPopulation: 0
+    freePoeple: 0
 --- !u!1 &3581778209513973795
 GameObject:
   m_ObjectHideFlags: 0
