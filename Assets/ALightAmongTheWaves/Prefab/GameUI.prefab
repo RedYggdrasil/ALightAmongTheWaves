@@ -702,9 +702,9 @@ MonoBehaviour:
   m_fontSize: 36
   m_fontSizeBase: 36
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 20
+  m_fontSizeMax: 36
   m_fontStyle: 0
   m_textAlignment: 544
   m_isAlignmentEnumConverted: 1
@@ -1407,6 +1407,7 @@ MonoBehaviour:
   food: {fileID: 2413039078441887789}
   population: {fileID: 2413039079099311929}
   inactivePopulation: {fileID: 2413039077503185563}
+  currentStep: {fileID: 2413039078388535282}
   nextStepButton: {fileID: 2413039078610161857}
 --- !u!1 &2413039078441887787
 GameObject:
@@ -1504,9 +1505,9 @@ MonoBehaviour:
   m_fontSize: 36
   m_fontSizeBase: 36
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 20
+  m_fontSizeMax: 36
   m_fontStyle: 0
   m_textAlignment: 544
   m_isAlignmentEnumConverted: 1
@@ -1807,7 +1808,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: -0.000061035156}
+  m_AnchoredPosition: {x: 0, y: -0.00012207031}
   m_SizeDelta: {x: 1136, y: 100}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &2413039078665503700
@@ -2018,9 +2019,9 @@ MonoBehaviour:
   m_fontSize: 36
   m_fontSizeBase: 36
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 20
+  m_fontSizeMax: 36
   m_fontStyle: 0
   m_textAlignment: 544
   m_isAlignmentEnumConverted: 1
@@ -2328,9 +2329,9 @@ MonoBehaviour:
   m_fontSize: 36
   m_fontSizeBase: 36
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 20
+  m_fontSizeMax: 36
   m_fontStyle: 0
   m_textAlignment: 544
   m_isAlignmentEnumConverted: 1
