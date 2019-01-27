@@ -74,7 +74,7 @@ public class MenuPanelManager : MonoBehaviour
         onClosedPanel = OnClosedPanelCallback;
 
         //quitPanelButton.gameObject.SetActive(false);
-        continueButton.interactable = SaveManager.Instance.haveAValidSave;
+        continueButton.interactable = false;// SaveManager.Instance.haveAValidSave;
         optionButton.interactable = false;
         StartCoroutine(FadePanelTo(1f, OnPanelOpened));
     }
