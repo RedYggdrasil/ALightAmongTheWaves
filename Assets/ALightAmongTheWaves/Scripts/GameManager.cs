@@ -88,7 +88,9 @@ public class GameManager : RedSpace.PersistentSingleton<GameManager>
     }
     private IEnumerator GameOverPanel()
     {
-        yield return null;
+        yield return GameOverUIManager.Instance.ShowGameOverPanel(2f);
+        yield return new WaitForSeconds(5f);
+        RedSpace.QuitTool.Quit();
     }
 }
 [System.Serializable]

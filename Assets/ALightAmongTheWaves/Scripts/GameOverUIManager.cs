@@ -1,18 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
+using RedSpace;
 
-public class GameOverUIManager : MonoBehaviour
+public class GameOverUIManager : Singleton<GameOverUIManager>
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] protected Canvas canvas;
+    [SerializeField] protected CanvasGroup canvasGroup;
 
-    // Update is called once per frame
-    void Update()
+    public IEnumerator ShowGameOverPanel(float time)
     {
-        
+        canvas.gameObject.SetActive(true);
+        canvasGroup.alpha = 0f;
+        yield return canvasGroup.DOFade(1f, time).SetEase(Ease.InSine).WaitForCompletion();
     }
 }
