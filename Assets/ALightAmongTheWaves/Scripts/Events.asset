@@ -172,7 +172,7 @@ MonoBehaviour:
     - text: Prendre le perroquet
       eventConsequence:
         tagChanges:
-        - isAnAddition: 0
+        - isAnAddition: 1
           tag: 5
         foodChange: 0
         woodChange: 0
@@ -217,7 +217,7 @@ MonoBehaviour:
     - text: Le faire accoster
       eventConsequence:
         tagChanges:
-        - isAnAddition: 0
+        - isAnAddition: 1
           tag: 3
         foodChange: 0
         woodChange: 0
@@ -245,18 +245,179 @@ MonoBehaviour:
     - text: Donner du bois
       eventConsequence:
         tagChanges:
-        - isAnAddition: 0
+        - isAnAddition: 1
           tag: 1
         foodChange: 0
-        woodChange: 0
+        woodChange: -5
         populationChange: 0
     - text: Donner du poisson
       eventConsequence:
         tagChanges:
-        - isAnAddition: 0
+        - isAnAddition: 1
           tag: 2
-        foodChange: 0
+        foodChange: -5
         woodChange: 0
         populationChange: 0
     weight: 0
     tag: 0
+  - id: 24
+    name: "M\xE9t\xE9orologue"
+    about: "Profitant de la brise ambiante, un hommen v\xEAtue d'une robe \xE0 paillette
+      sur une planche \xE0 voile aborde le navire : \"Parfaiiiit, je vais enfin pouvoir
+      utiliser la puissance des astres gr\xE2ce \xE0 ce bateau pour dominer le moooonde.
+      A moi la ma\xEEtrise du temps !\""
+    choice:
+    - text: "L'\xE9couter"
+      eventConsequence:
+        tagChanges:
+        - isAnAddition: 1
+          tag: 4
+        foodChange: 0
+        woodChange: 0
+        populationChange: 1
+    - text: Ne pas l'accueillir
+      eventConsequence:
+        tagChanges: []
+        foodChange: 0
+        woodChange: -10
+        populationChange: 0
+    weight: 10
+    tag: 0
+  - id: 20
+    name: forestier
+    about: "La caravelle manque de toucher un arbre d\xE9racin\xE9 balllot\xE9 par
+      les eaux. Couch\xE9 calmement sur le tronc, la t\xEAte pos\xE9 sur un petit
+      tas de feuilles, un personnage d\xE9cor\xE9 d'habits verts s'exclame \"hmmpff,
+      ce p'tit gaillard semble tomber en morceaux. Un peu d'bois de mon sac et de
+      ses r\xE9s\xE8rves devrait raviver sa flamme\"."
+    choice:
+    - text: Retaper le navire
+      eventConsequence:
+        tagChanges: []
+        foodChange: 0
+        woodChange: -20
+        populationChange: 0
+    - text: Ne pas faire de modification
+      eventConsequence:
+        tagChanges: []
+        foodChange: 0
+        woodChange: 0
+        populationChange: 0
+    weight: 10
+    tag: 0
+  - id: 14
+    name: "Sir\xE8ne"
+    about: "Un chant m\xE9lodieux venant des profondeurs arrive jusqu'\xE0 vos oreilles
+      \xE9th\xE9r\xE9es. Le son de ses sublimes cr\xE9atures herbivores est certainement
+      le signe qu'un grand tr\xE9sor se trouve en dessous du navire."
+    choice:
+    - text: "P\xEAcher"
+      eventConsequence:
+        tagChanges: []
+        foodChange: -10
+        woodChange: 0
+        populationChange: 0
+    - text: Ne rien faire
+      eventConsequence:
+        tagChanges: []
+        foodChange: 0
+        woodChange: 0
+        populationChange: 0
+    weight: 30
+    tag: 0
+  - id: 8
+    name: Hollandais volant
+    about: "Le pont, les gr\xE9ements et le dortoir n'ont pas encore fini de s\xE9cher
+      suite \xE0 la pluie qu'un \xE9v\xE9nement singulier appara\xEEt : l'ombre du
+      navire prend la forme d'une sp\xE9cialit\xE9 hollandaise avant de s'envoler
+      pour laisser place \xE0 nouveau \xE0 l'ombre originale. Esp\xE9rons qu'aucun
+      membres de l'\xE9quipage soit tent\xE9 de le suivre."
+    choice:
+    - text: Continuer
+      eventConsequence:
+        tagChanges: []
+        foodChange: 10
+        woodChange: 0
+        populationChange: -2
+    weight: 10
+    tag: 0
+  - id: 3
+    name: "Biblioth\xE9caire"
+    about: "Une voix aigue se fait entendre \xE0 l'approche d'un r\xE9cif mena\xE7ant
+      : \"A l'intention du gentilhomme guidant cette ravissante caravelle, nul ne
+      m'attends et je n'ai aucun havre, puis-je accoster sur le pont afin de contribuer
+      \xE0 votre noble t\xE2che avec mes humbles talents d'\xE9loquences ?\""
+    choice:
+    - text: L'emmener
+      eventConsequence:
+        tagChanges:
+        - isAnAddition: 1
+          tag: 6
+        foodChange: 0
+        woodChange: 0
+        populationChange: 1
+    - text: "Le laisser \xE0 son sort"
+      eventConsequence:
+        tagChanges: []
+        foodChange: 0
+        woodChange: 0
+        populationChange: 0
+    weight: 20
+    tag: 0
+  - id: 9
+    name: Sparrow
+    about: "Un moineau bien \xE9trange se pose sur le gouvernail. Apr\xE8s s'\xEAtre
+      nettoy\xE9 les ailes, il chante : \"O\xF9 est ma perle ? Ma perle dans une bouteille
+      ?\""
+    choice:
+    - text: A Babord !
+      eventConsequence:
+        tagChanges: []
+        foodChange: -20
+        woodChange: 0
+        populationChange: 0
+    - text: A Tribord !
+      eventConsequence:
+        tagChanges: []
+        foodChange: 0
+        woodChange: -20
+        populationChange: 0
+    weight: 20
+    tag: 0
+  - id: 12
+    name: "D\xE9bris"
+    about: "Une fr\xE9gate se dessine entre plusieurs r\xE9cifs. Ses voiles sont en
+      lambeaux, ses compartimets perc\xE9s par les rochers et ses vivres tombent petits
+      \xE0 petits dans l'eau. Nul ne sait comment il as atteri ici, mais tout le monde
+      conna\xEEt son lots de provisions dans sa cave."
+    choice:
+    - text: "R\xE9cup\xE9rer les bien"
+      eventConsequence:
+        tagChanges: []
+        foodChange: 0
+        woodChange: 5
+        populationChange: 0
+    - text: Continuer sa route
+      eventConsequence:
+        tagChanges: []
+        foodChange: 0
+        woodChange: 0
+        populationChange: 0
+    weight: 40
+    tag: 0
+  - id: 6
+    name: Chambre froide
+    about: "Un membre de l'\xE9quipage \xE0 oubli\xE9 de fermer la porte de la chambre
+      froide. Le gel se propage dans une des salles voisines, o\xF9 se trouvait malheureusement
+      le perroquet. Il ne peut \xEAtre r\xE9anim\xE9."
+    choice:
+    - text: Continuer
+      eventConsequence:
+        tagChanges:
+        - isAnAddition: 0
+          tag: 5
+        foodChange: 0
+        woodChange: 0
+        populationChange: 0
+    weight: 20
+    tag: 5
