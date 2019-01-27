@@ -96,9 +96,7 @@ MonoBehaviour:
   moduleActions:
   - moduleAction: 0
     actionValue: 4
-  - moduleAction: 1
-    actionValue: 4
   cost:
     woodCost: 0
     foodCost: 0
-    freePoepleCost: 0
+    freePeopleCost: 0

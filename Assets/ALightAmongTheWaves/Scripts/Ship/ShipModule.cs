@@ -7,7 +7,7 @@ public class ShipModule : MonoBehaviour
 {
     public Vector2Int moduleSize = new Vector2Int(1,1);
 
-    public enum ShipModuleAction { kPopulationMax, kPopulation, kFoodIncome, kFoodMax, kWoodIncome, kWoodMax, kProductionBonus}
+    public enum ShipModuleAction { kPopulationMax, kFoodIncome, kFoodMax, kWoodIncome, kWoodMax, kProductionBonus}
 
     [Serializable]
     public struct ModuleAction
@@ -23,7 +23,7 @@ public class ShipModule : MonoBehaviour
     {
         public int woodCost;
         public int foodCost;
-        public int freePoepleCost;
+        public int freePeopleCost;
     }
 
     public Cost cost;
@@ -39,34 +39,28 @@ public class ShipModule : MonoBehaviour
     {
         _ship = Ship.Instance;
 
-        _ship.shipEconomy.freePoeple -= cost.freePoepleCost;
-
         foreach(ModuleAction action in moduleActions)
         {
             switch (action.moduleAction)
             {
                 case ShipModuleAction.kPopulationMax:
-                    _ship.shipEconomy.maxPopulation += action.actionValue;
-                    break;
-
-                case ShipModuleAction.kPopulation:
-                    _ship.shipEconomy.freePoeple += action.actionValue;
+                    StorageManager.Instance.storage.population.MaxAmount += action.actionValue;
                     break;
 
                 case ShipModuleAction.kFoodIncome:
-                    _ship.shipEconomy.foodIncome += action.actionValue;
+                    _ship.shipEconomyIncome.foodIncome += action.actionValue;
                     break;
 
                 case ShipModuleAction.kFoodMax:
-                    _ship.shipEconomy.foodMax += action.actionValue;
+                    StorageManager.Instance.storage.food.MaxAmount += action.actionValue;
                     break;
 
                 case ShipModuleAction.kWoodIncome:
-                    _ship.shipEconomy.woodIncome += action.actionValue;
+                    _ship.shipEconomyIncome.woodIncome += action.actionValue;
                     break;
 
                 case ShipModuleAction.kWoodMax:
-                    _ship.shipEconomy.woodMax += action.actionValue;
+                    StorageManager.Instance.storage.wood.MaxAmount += action.actionValue;
                     break;
 
                 case ShipModuleAction.kProductionBonus:
@@ -81,35 +75,29 @@ public class ShipModule : MonoBehaviour
         if (_ship == null)
             return;
 
-        _ship.shipEconomy.freePoeple += cost.freePoepleCost;
-
         foreach (ModuleAction action in moduleActions)
         {
             switch (action.moduleAction)
             {
                 case ShipModuleAction.kPopulationMax:
-                    _ship.shipEconomy.maxPopulation -= action.actionValue;
-                    _ship.shipEconomy.freePoeple -= action.actionValue;
-                    break;
-
-                case ShipModuleAction.kPopulation:
-                    _ship.shipEconomy.freePoeple -= action.actionValue;
+                    StorageManager.Instance.storage.population.MaxAmount -= action.actionValue;
+                    
                     break;
 
                 case ShipModuleAction.kFoodIncome:
-                    _ship.shipEconomy.foodIncome -= action.actionValue;
+                    _ship.shipEconomyIncome.foodIncome -= action.actionValue;
                     break;
 
                 case ShipModuleAction.kFoodMax:
-                    _ship.shipEconomy.foodMax -= action.actionValue;
+                    StorageManager.Instance.storage.food.MaxAmount -= action.actionValue;
                     break;
 
                 case ShipModuleAction.kWoodIncome:
-                    _ship.shipEconomy.woodIncome -= action.actionValue;
+                    _ship.shipEconomyIncome.woodIncome -= action.actionValue;
                     break;
 
                 case ShipModuleAction.kWoodMax:
-                    _ship.shipEconomy.woodMax -= action.actionValue;
+                    StorageManager.Instance.storage.wood.MaxAmount -= action.actionValue;
                     break;
 
                 case ShipModuleAction.kProductionBonus:
@@ -126,12 +114,12 @@ public class ShipModule : MonoBehaviour
             switch (moduleActions[i].moduleAction)
             {
                 case ShipModuleAction.kFoodIncome:
-                    _ship.shipEconomy.foodIncome += actionValueBoost;
+                    _ship.shipEconomyIncome.foodIncome += actionValueBoost;
                     moduleActions[i].actionValue += actionValueBoost;
                     break;
 
                 case ShipModuleAction.kWoodIncome:
-                    _ship.shipEconomy.woodIncome += actionValueBoost;
+                    _ship.shipEconomyIncome.woodIncome += actionValueBoost;
                     moduleActions[i].actionValue += actionValueBoost;
                     break;
             }

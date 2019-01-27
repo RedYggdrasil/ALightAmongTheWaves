@@ -94,9 +94,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moduleSize: {x: 1, y: 1}
   moduleActions:
-  - moduleAction: 2
+  - moduleAction: 1
     actionValue: 4
   cost:
     woodCost: 0
     foodCost: 0
-    freePoepleCost: 2
+    freePeopleCost: 0
