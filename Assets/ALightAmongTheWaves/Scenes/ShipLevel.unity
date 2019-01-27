@@ -722,7 +722,6 @@ GameObject:
   - component: {fileID: 1426836991}
   - component: {fileID: 1426836990}
   - component: {fileID: 1426836989}
-  - component: {fileID: 1426836992}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -794,19 +793,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1426836992
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1426836988}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6329d5c4a47c98a4f8e13742c99b6c08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _camera: {fileID: 1426836990}
 --- !u!1001 &1489189722
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1423,30 +1409,30 @@ PrefabInstance:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2413039078388535282, guid: c3a0ca6c706d95545865b3495a25e9f2,
+        type: 3}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2413039078388535282, guid: c3a0ca6c706d95545865b3495a25e9f2,
+        type: 3}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2413039077788423786, guid: c3a0ca6c706d95545865b3495a25e9f2,
+        type: 3}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2413039077788423786, guid: c3a0ca6c706d95545865b3495a25e9f2,
+        type: 3}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2413039078665503698, guid: c3a0ca6c706d95545865b3495a25e9f2,
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -0.00012207031
-      objectReference: {fileID: 0}
-    - target: {fileID: 2413039078388535282, guid: c3a0ca6c706d95545865b3495a25e9f2,
-        type: 3}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2413039078388535282, guid: c3a0ca6c706d95545865b3495a25e9f2,
-        type: 3}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2413039077788423786, guid: c3a0ca6c706d95545865b3495a25e9f2,
-        type: 3}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2413039077788423786, guid: c3a0ca6c706d95545865b3495a25e9f2,
-        type: 3}
-      propertyPath: m_isInputParsingRequired
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3a0ca6c706d95545865b3495a25e9f2, type: 3}
