@@ -19,24 +19,38 @@ MonoBehaviour:
       int\xE9ress\xE9s \xE0 monter \xE0 bord et pr\xE9pare d\xE9j\xE0 leurs ressources."
     choice:
     - text: "Faire monter \xE0 bord"
-      dataConsequence: 1
-      consequence: 5
+      eventConsequence:
+        tagChanges: []
+        foodChange: 0
+        woodChange: 0
+        populationChange: 1
     - text: Donner de la nourriture
-      dataConsequence: 5
-      consequence: 1
+      eventConsequence:
+        tagChanges: []
+        foodChange: -1
+        woodChange: 0
+        populationChange: 0
     weight: 50
+    tag: 0
   - id: 1
     name: "Accueil(Naufrag\xE9s)"
     about: "Une personne ballot\xE9 entre les vagues se dirige dangereusement vers
       la coque du navire et semble s'\xE9vanouir."
     choice:
     - text: Venir en aide
-      dataConsequence: 1
-      consequence: 5
+      eventConsequence:
+        tagChanges: []
+        foodChange: 0
+        woodChange: 0
+        populationChange: 1
     - text: Faire un radeau de sauvetage
-      dataConsequence: 5
-      consequence: 3
+      eventConsequence:
+        tagChanges: []
+        foodChange: 0
+        woodChange: -2
+        populationChange: 0
     weight: 40
+    tag: 0
   - id: 5
     name: Tempest
     about: "De violentes rafales provoque une mer agit\xE9e. Au loin, un mur d'eau
@@ -44,21 +58,32 @@ MonoBehaviour:
       son bois et de voir ses voiles d\xE9chir\xE9es si rien n'est fait."
     choice:
     - text: "Prot\xE9ger le bateau"
-      dataConsequence: 10
-      consequence: 3
+      eventConsequence:
+        tagChanges: []
+        foodChange: 0
+        woodChange: -10
+        populationChange: 0
     - text: "Tentez d'\xE9chapper au tsunami"
-      dataConsequence: 2
-      consequence: 2
+      eventConsequence:
+        tagChanges: []
+        foodChange: 0
+        woodChange: 0
+        populationChange: -2
     weight: 20
+    tag: 0
   - id: 21
     name: pluie
     about: "Les nuages au dessus de la caravelle deviennent subitement grises. Quelques
       instants plus tard, une forte averse s'abat sur l'oc\xE9an."
     choice:
     - text: Continuer
-      dataConsequence: 0
-      consequence: 0
+      eventConsequence:
+        tagChanges: []
+        foodChange: 0
+        woodChange: 0
+        populationChange: 0
     weight: 0
+    tag: 0
   - id: 12
     name: "D\xE9bris"
     about: "Une fr\xE9gate se dessine entre plusieurs r\xE9cifs. Ses voiles sont en
@@ -67,12 +92,19 @@ MonoBehaviour:
       conna\xEEt son lots de provisions dans sa cale."
     choice:
     - text: "R\xE9cup\xE9rer les biens du vestige"
-      dataConsequence: 10
-      consequence: 6
+      eventConsequence:
+        tagChanges: []
+        foodChange: 0
+        woodChange: 10
+        populationChange: 0
     - text: Continuer sa route
-      dataConsequence: 0
-      consequence: 0
+      eventConsequence:
+        tagChanges: []
+        foodChange: 0
+        woodChange: 0
+        populationChange: 0
     weight: 30
+    tag: 0
   - id: 10
     name: "Pr\xEAtre bon"
     about: "Une personne v\xEAtue d'une robe aux couleurs ocres et d'un collier de
@@ -81,12 +113,19 @@ MonoBehaviour:
       malgr\xE9 le silence."
     choice:
     - text: Donner de la monnaie
-      dataConsequence: 15
-      consequence: 4
+      eventConsequence:
+        tagChanges: []
+        foodChange: 10
+        woodChange: 0
+        populationChange: 0
     - text: Donner biens
-      dataConsequence: 1
-      consequence: 3
+      eventConsequence:
+        tagChanges: []
+        foodChange: 0
+        woodChange: -1
+        populationChange: 0
     weight: 20
+    tag: 0
   - id: 17
     name: "Pr\xEAtre mauvais"
     about: "Un homme mal ras\xE9 et habill\xE9 d'une tunique jaune et d'un collier
@@ -95,9 +134,16 @@ MonoBehaviour:
       malgr\xE9 le silence."
     choice:
     - text: Donner de la monnaie
-      dataConsequence: 0
-      consequence: 0
+      eventConsequence:
+        tagChanges: []
+        foodChange: 0
+        woodChange: 0
+        populationChange: 0
     - text: Donner des biens
-      dataConsequence: 5
-      consequence: 1
+      eventConsequence:
+        tagChanges: []
+        foodChange: 0
+        woodChange: -4
+        populationChange: 0
     weight: 10
+    tag: 0
