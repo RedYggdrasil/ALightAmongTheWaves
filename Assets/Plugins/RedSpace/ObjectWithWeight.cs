@@ -55,7 +55,7 @@ namespace RedSpace
 #else
             if (array.Length > 0)
             {
-                return array[array.Length - 1]
+                return array[array.Length - 1];
             }
             return null;
 #endif
