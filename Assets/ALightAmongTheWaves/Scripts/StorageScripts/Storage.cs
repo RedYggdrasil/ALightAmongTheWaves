@@ -38,10 +38,15 @@ public class StorageManager
     public void SetStorage(Storage aStorage)
     {
         _storage = aStorage;
+        //Debug.Log("SetStorage");
         for (int i = 0; i < _storage.resources.Length; ++i)
         {
-            _storage.resources[i].SetResourceUpdateCallback(_storage.onStorageUpdate);
+            _storage.resources[i].SetResourceUpdateCallback(CallOnStorageUpdate);
         }
+    }
+    public void CallOnStorageUpdate()
+    {
+        _storage.onStorageUpdate?.Invoke();
     }
     public Storage CreateAStartStorage()
     {

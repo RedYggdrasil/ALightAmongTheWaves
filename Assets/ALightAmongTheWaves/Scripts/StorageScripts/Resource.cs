@@ -35,12 +35,12 @@ public interface IResource
         get;
         set;
     }
-    void SetResourceUpdateCallback(Storage.OnStorageUpdate callback);
+    void SetResourceUpdateCallback(System.Action callback);
 }
 [System.Serializable]
 public abstract class AResource : IResource
 {
-    protected Storage.OnStorageUpdate _onStorageUpdate;
+    protected System.Action _onStorageUpdate;
     public abstract ResourceType ResourceType { get; }
     public abstract int Amount { get; set; }
     [SerializeField] protected int _minAmount;
@@ -52,7 +52,7 @@ public abstract class AResource : IResource
     {
         Amount = Mathf.Clamp(Amount, MinAmount, MaxAmount);
     }
-    public virtual void SetResourceUpdateCallback(Storage.OnStorageUpdate callback)
+    public virtual void SetResourceUpdateCallback(System.Action callback)
     {
         _onStorageUpdate = callback;
     }

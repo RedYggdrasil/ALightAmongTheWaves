@@ -19,7 +19,6 @@ public class StepManager : Singleton<StepManager>
         //  Gestion de la base
         //  Resource en Prévision (Panel Résumé)
         //  Save
-        Debug.Log("StatSteps !");
         while (true)
         {
 
@@ -32,12 +31,12 @@ public class StepManager : Singleton<StepManager>
                 yield return new WaitForEndOfFrame();
             }
 
+            Debug.Log("UpdateIncome");
             UpdateIncome();
+            Debug.Log(_eventConsequence);
             EventConsequence(_eventConsequence);
             _eventConsequence = null;
-            //Update Resource
-
-            //Evenement Consequence (Same Frame)
+            
 
             //  Gestion de la base
 
@@ -95,7 +94,7 @@ public class StepManager : Singleton<StepManager>
     }
     protected void OnEventEnded(EventConsequence ec)
     {
-
+        _eventConsequence = ec;
     }
     // Update is called once per frame
     void Update()
