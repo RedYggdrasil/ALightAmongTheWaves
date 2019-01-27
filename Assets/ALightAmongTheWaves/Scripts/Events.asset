@@ -18,13 +18,13 @@ MonoBehaviour:
     about: A frail skiff approaches with a member within it. He seems interested in
       getting on board and is already preparing his stuff
     choice:
-    - text: "Faire monter \xE0 bord"
+    - text: Welcome aboard
       eventConsequence:
         tagChanges: []
         foodChange: 0
         woodChange: 0
         populationChange: 1
-    - text: Donner de la nourriture
+    - text: Give food
       eventConsequence:
         tagChanges: []
         foodChange: -1
@@ -37,13 +37,13 @@ MonoBehaviour:
     about: A person tossed between the waves heads dangerously towards the hull of
       the ship and seems to faint.
     choice:
-    - text: Venir en aide
+    - text: 'Help them '
       eventConsequence:
         tagChanges: []
         foodChange: 0
         woodChange: 0
         populationChange: 1
-    - text: Faire un radeau de sauvetage
+    - text: 'Give wood to build a raft '
       eventConsequence:
         tagChanges: []
         foodChange: 0
@@ -56,13 +56,13 @@ MonoBehaviour:
     about: Violent gusts cause a rough sea. No doubt, the boat may lose its wood and
       see his sails torn if nothing is done.
     choice:
-    - text: "Prot\xE9ger le bateau"
+    - text: Protect the boat !
       eventConsequence:
         tagChanges: []
         foodChange: 0
         woodChange: -10
         populationChange: 0
-    - text: "Tentez d'\xE9chapper au tsunami"
+    - text: Try to escape the tempest
       eventConsequence:
         tagChanges: []
         foodChange: 0
@@ -75,7 +75,7 @@ MonoBehaviour:
     about: The clouds above the caravel suddenly become gray. A few moments later,
       a heavy downpour falls on the ocean.
     choice:
-    - text: Continuer
+    - text: Continue
       eventConsequence:
         tagChanges: []
         foodChange: 0
@@ -90,13 +90,13 @@ MonoBehaviour:
       in the water. No one knows how he landed here, but everyone knows his lots of
       provisions in his hold.
     choice:
-    - text: "R\xE9cup\xE9rer les biens du vestige"
+    - text: Recover the goods
       eventConsequence:
         tagChanges: []
         foodChange: 0
         woodChange: 10
         populationChange: 0
-    - text: Continuer sa route
+    - text: Ignore it and continue
       eventConsequence:
         tagChanges: []
         foodChange: 0
@@ -130,13 +130,13 @@ MonoBehaviour:
       with a raft. He gets up and slams in the direction of the ship: "The alms for
       a man of faith". He insists heavily despite the silence.'
     choice:
-    - text: Donner de la monnaie
+    - text: 'Give money '
       eventConsequence:
         tagChanges: []
         foodChange: 0
         woodChange: 0
         populationChange: 0
-    - text: Donner des biens
+    - text: Give some goods
       eventConsequence:
         tagChanges: []
         foodChange: 0
@@ -150,7 +150,7 @@ MonoBehaviour:
       serves as a landmark for shipwrecked and lantern for your trip, its usefulness
       has become obsolete. Unless you increase the consumption of wood
     choice:
-    - text: Utiliser plus de bois
+    - text: More woods !!!
       eventConsequence:
         tagChanges: []
         foodChange: 0
@@ -164,7 +164,7 @@ MonoBehaviour:
       parrot begins to sing a very sad air. He certainly needs to be collected. That
       could make you a captain of legend!
     choice:
-    - text: Prendre le perroquet
+    - text: Take it with you
       eventConsequence:
         tagChanges:
         - isAnAddition: 1
@@ -172,7 +172,7 @@ MonoBehaviour:
         foodChange: 0
         woodChange: 0
         populationChange: 0
-    - text: Ne pas s'occuper de l'animal
+    - text: Let it go
       eventConsequence:
         tagChanges: []
         foodChange: 0
@@ -185,13 +185,13 @@ MonoBehaviour:
     about: An area witnesses mysterious disappearances appear in front. Escaping the
       Whispering Triangle would be nifty going through the salient reefs.
     choice:
-    - text: Continuer tout droit
+    - text: Stay straight
       eventConsequence:
         tagChanges: []
         foodChange: 0
         woodChange: 0
         populationChange: -3
-    - text: Prendre l'autre chemin
+    - text: 'Take an another way '
       eventConsequence:
         tagChanges: []
         foodChange: -10
@@ -206,7 +206,7 @@ MonoBehaviour:
       in the world?\r\nWith me on board, loneliness in the ocean and your seabed phobia
       will be nothing but a bad memory. \""
     choice:
-    - text: Le faire accoster
+    - text: 'Take him on board '
       eventConsequence:
         tagChanges:
         - isAnAddition: 1
@@ -214,7 +214,7 @@ MonoBehaviour:
         foodChange: 0
         woodChange: 0
         populationChange: 1
-    - text: Le laisser sur son rafiot
+    - text: Don't take him
       eventConsequence:
         tagChanges: []
         foodChange: -5
@@ -231,7 +231,7 @@ MonoBehaviour:
       have wood or fish to exchange, I''d like to show you how to make small sushi,
       or I can give you shoots from my native country ... Is there anyone ?"'
     choice:
-    - text: Donner du bois
+    - text: Give some woods
       eventConsequence:
         tagChanges:
         - isAnAddition: 1
@@ -239,7 +239,7 @@ MonoBehaviour:
         foodChange: 0
         woodChange: -5
         populationChange: 0
-    - text: Donner du poisson
+    - text: Give some fish
       eventConsequence:
         tagChanges:
         - isAnAddition: 1
@@ -250,13 +250,12 @@ MonoBehaviour:
     weight: 0
     tag: 0
   - id: 24
-    name: "M\xE9t\xE9orologue"
-    about: "Profitant de la brise ambiante, un hommen v\xEAtue d'une robe \xE0 paillette
-      sur une planche \xE0 voile aborde le navire : \"Parfaiiiit, je vais enfin pouvoir
-      utiliser la puissance des astres gr\xE2ce \xE0 ce bateau pour dominer le moooonde.
-      A moi la ma\xEEtrise du temps !\""
+    name: Meteooo
+    about: 'Taking advantage of the ambient breeze, a man dressed in a sequined dress
+      on a windsurfing board approached the ship: "Perfectly, I will finally be able
+      to use the power of the stars with this boat to dominate the world. time !"'
     choice:
-    - text: "L'\xE9couter"
+    - text: Listen to him
       eventConsequence:
         tagChanges:
         - isAnAddition: 1
@@ -264,7 +263,7 @@ MonoBehaviour:
         foodChange: 0
         woodChange: 0
         populationChange: 1
-    - text: Ne pas l'accueillir
+    - text: Don't listen to him
       eventConsequence:
         tagChanges: []
         foodChange: 0
@@ -273,20 +272,20 @@ MonoBehaviour:
     weight: 10
     tag: 0
   - id: 20
-    name: forestier
-    about: "La caravelle manque de toucher un arbre d\xE9racin\xE9 balllot\xE9 par
-      les eaux. Couch\xE9 calmement sur le tronc, la t\xEAte pos\xE9 sur un petit
-      tas de feuilles, un personnage d\xE9cor\xE9 d'habits verts s'exclame \"hmmpff,
-      ce p'tit gaillard semble tomber en morceaux. Un peu d'bois de mon sac et de
-      ses r\xE9s\xE8rves devrait raviver sa flamme\"."
+    name: Forester
+    about: The caravel misses touching an uprooted tree in the water. Calmly lying
+      on the trunk, his head resting on a small pile of leaves, a character decorated
+      with green clothes exclaims "hmmpff, this little fellow seems to be falling
+      apart." A little wood from my bag and his Reserves should revive his flame.
+      "
     choice:
-    - text: Retaper le navire
+    - text: Fix the caravel
       eventConsequence:
         tagChanges: []
         foodChange: 0
         woodChange: -20
         populationChange: 0
-    - text: Ne pas faire de modification
+    - text: Ignore him
       eventConsequence:
         tagChanges: []
         foodChange: 0
@@ -295,18 +294,18 @@ MonoBehaviour:
     weight: 10
     tag: 0
   - id: 14
-    name: "Sir\xE8ne"
-    about: "Un chant m\xE9lodieux venant des profondeurs arrive jusqu'\xE0 vos oreilles
-      \xE9th\xE9r\xE9es. Le son de ses sublimes cr\xE9atures herbivores est certainement
-      le signe qu'un grand tr\xE9sor se trouve en dessous du navire."
+    name: Mermaid
+    about: A melodious song from the depths reaches your ethereal ears. The sound
+      of its sublime herbivorous creatures is certainly the sign that a great treasure
+      is below the ship.
     choice:
-    - text: "P\xEAcher"
+    - text: Fishing
       eventConsequence:
         tagChanges: []
         foodChange: -10
         woodChange: 0
         populationChange: 0
-    - text: Ne rien faire
+    - text: Do nothing
       eventConsequence:
         tagChanges: []
         foodChange: 0
@@ -315,14 +314,13 @@ MonoBehaviour:
     weight: 30
     tag: 0
   - id: 8
-    name: Hollandais volant
-    about: "Le pont, les gr\xE9ements et le dortoir n'ont pas encore fini de s\xE9cher
-      suite \xE0 la pluie qu'un \xE9v\xE9nement singulier appara\xEEt : l'ombre du
-      navire prend la forme d'une sp\xE9cialit\xE9 hollandaise avant de s'envoler
-      pour laisser place \xE0 nouveau \xE0 l'ombre originale. Esp\xE9rons qu'aucun
-      membres de l'\xE9quipage soit tent\xE9 de le suivre."
+    name: 'Flying Dutchman '
+    about: 'The bridge, the rigging and the dormitory have not yet finished drying
+      in the rain, a singular event appears: the shadow of the ship takes the form
+      of a Dutch specialty before flying away to make room again in the original shade.
+      Let''s hope that no crew members are tempted to follow him.'
     choice:
-    - text: Continuer
+    - text: Continue
       eventConsequence:
         tagChanges: []
         foodChange: 10
@@ -331,13 +329,13 @@ MonoBehaviour:
     weight: 10
     tag: 0
   - id: 3
-    name: "Biblioth\xE9caire"
-    about: "Une voix aigue se fait entendre \xE0 l'approche d'un r\xE9cif mena\xE7ant
-      : \"A l'intention du gentilhomme guidant cette ravissante caravelle, nul ne
-      m'attends et je n'ai aucun havre, puis-je accoster sur le pont afin de contribuer
-      \xE0 votre noble t\xE2che avec mes humbles talents d'\xE9loquences ?\""
+    name: Library
+    about: 'An acute voice is heard as we approach a threatening reef: "To the gentleman
+      guiding this beautiful caravel, no one is waiting for me and I have no harbor,
+      can I dock on deck to to contribute to your noble task with my humble eloquent
+      talents? "'
     choice:
-    - text: L'emmener
+    - text: Take him aboard
       eventConsequence:
         tagChanges:
         - isAnAddition: 1
@@ -345,7 +343,7 @@ MonoBehaviour:
         foodChange: 0
         woodChange: 0
         populationChange: 1
-    - text: "Le laisser \xE0 son sort"
+    - text: 'Let him continue alone '
       eventConsequence:
         tagChanges: []
         foodChange: 0
@@ -355,9 +353,8 @@ MonoBehaviour:
     tag: 0
   - id: 9
     name: Sparrow
-    about: "Un moineau bien \xE9trange se pose sur le gouvernail. Apr\xE8s s'\xEAtre
-      nettoy\xE9 les ailes, il chante : \"O\xF9 est ma perle ? Ma perle dans une bouteille
-      ?\""
+    about: 'A very strange sparrow settles on the rudder. After cleaning his wings,
+      he sings: "Where''s my pearl, my pearl in a bottle?"'
     choice:
     - text: A Babord !
       eventConsequence:
@@ -374,19 +371,19 @@ MonoBehaviour:
     weight: 20
     tag: 0
   - id: 12
-    name: "D\xE9bris"
-    about: "Une fr\xE9gate se dessine entre plusieurs r\xE9cifs. Ses voiles sont en
-      lambeaux, ses compartimets perc\xE9s par les rochers et ses vivres tombent petits
-      \xE0 petits dans l'eau. Nul ne sait comment il as atteri ici, mais tout le monde
-      conna\xEEt son lots de provisions dans sa cave."
+    name: Debris
+    about: A frigate is drawn between several reefs. His sails are in tatters, his
+      compartments pierced by the rocks and his provisions fall little by little into
+      the water. No one knows how he landed here, but everyone knows his lots of provisions
+      in his cellar.
     choice:
-    - text: "R\xE9cup\xE9rer les bien"
+    - text: Recolt the scraps
       eventConsequence:
         tagChanges: []
         foodChange: 0
         woodChange: 5
         populationChange: 0
-    - text: Continuer sa route
+    - text: 'Continue the road '
       eventConsequence:
         tagChanges: []
         foodChange: 0
@@ -395,10 +392,10 @@ MonoBehaviour:
     weight: 40
     tag: 0
   - id: 6
-    name: Chambre froide
-    about: "Un membre de l'\xE9quipage \xE0 oubli\xE9 de fermer la porte de la chambre
-      froide. Le gel se propage dans une des salles voisines, o\xF9 se trouvait malheureusement
-      le perroquet. Il ne peut \xEAtre r\xE9anim\xE9."
+    name: Fridge room
+    about: A member of the crew forgot to close the door of the cold room. The frost
+      is spreading in one of the neighboring rooms, where unfortunately the parrot
+      was. He can not be revived.
     choice:
     - text: Continuer
       eventConsequence:
