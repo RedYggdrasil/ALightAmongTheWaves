@@ -85,7 +85,8 @@ public class GameManager : RedSpace.PersistentSingleton<GameManager>
 [System.Serializable]
 public class TagContainer
 {
-
+    public delegate void OnTagsUpdate();
+    public OnTagsUpdate onTagsUpdate;
     protected static TagContainer _instance;
     public static TagContainer Instance
     {
@@ -122,5 +123,9 @@ public class TagContainer
     public List<Consequence> GetTagListRefence()
     {
         return _tags;
+    }
+    public void TagUpdated()
+    {
+        onTagsUpdate?.Invoke();
     }
 }
