@@ -1433,6 +1433,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e9ed7a8bd3332c41b7e8202e6d68688, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wood: {fileID: 2413039078872787289}
+  food: {fileID: 2413039078441887789}
+  population: {fileID: 2413039079099311929}
+  inactivePopulation: {fileID: 2413039077503185563}
 --- !u!1 &2413039078441887787
 GameObject:
   m_ObjectHideFlags: 0

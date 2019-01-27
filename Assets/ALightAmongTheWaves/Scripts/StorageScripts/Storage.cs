@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class StorageManager
 {
+    public static bool existInstance
+    {
+        get
+        {
+            return (_instance != null);
+        }
+    }
     protected static StorageManager _instance;
     public static StorageManager Instance
     {
@@ -50,7 +57,8 @@ public class StorageManager
 
         s.population.MinAmount = 0;
         s.population.MaxAmount = 10;
-        s.population.Amount = 1;
+        s.population.Amount = 5;
+        s.population.occupedPopulation = 0;
         return s;
     }
     public Storage GetStorageRefence()

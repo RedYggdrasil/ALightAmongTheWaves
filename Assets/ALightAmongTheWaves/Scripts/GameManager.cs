@@ -85,6 +85,13 @@ public class GameManager : RedSpace.PersistentSingleton<GameManager>
 [System.Serializable]
 public class TagContainer
 {
+    public static bool existInstance
+    {
+        get
+        {
+            return (_instance != null);
+        }
+    }
     public delegate void OnTagsUpdate();
     public OnTagsUpdate onTagsUpdate;
     protected static TagContainer _instance;

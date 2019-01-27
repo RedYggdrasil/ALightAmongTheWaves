@@ -124,6 +124,14 @@ public class Food : IntBasedResource
 public class Population : ListBasedResource<Human>
 {
     public override ResourceType ResourceType { get { return ResourceType.Population; } }
+    [SerializeField]public int occupedPopulation;
+    public int freePopulation
+    {
+        get
+        {
+            return Amount - occupedPopulation;
+        }
+    }
 }
 [System.Serializable]
 public class Human

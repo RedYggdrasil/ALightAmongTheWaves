@@ -56,7 +56,13 @@ public class StepManager : Singleton<StepManager>
 [System.Serializable]
 public class TurnContainer
 {
-
+    public static bool existInstance
+    {
+        get
+        {
+            return (_instance != null);
+        }
+    }
     protected static TurnContainer _instance;
     public static TurnContainer Instance
     {
