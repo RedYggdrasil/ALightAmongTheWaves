@@ -981,6 +981,11 @@ PrefabInstance:
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1711627307859913366, guid: 09f87759dad6fd14d95f786f8915f4c2,
+        type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09f87759dad6fd14d95f786f8915f4c2, type: 3}
 --- !u!224 &1710375187 stripped
