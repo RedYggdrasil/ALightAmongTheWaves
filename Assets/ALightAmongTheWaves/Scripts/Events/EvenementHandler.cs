@@ -9,8 +9,8 @@ using System;
 
 public class EvenementHandler : Singleton<EvenementHandler>
 {
-
-    public List<EventSystem> listeEvenements;
+    [SerializeField] protected ScriptableEvent scriptableEvent;
+    [SerializeField] [NaughtyAttributes.ReadOnly] protected List<EventSystem> listeEvenements;
     public System.Action<EventConsequence> ToCallOnEndEvent = null;
     private EventSystem eventSelected;
     private System.Action<EventConsequence> callbackTemp;
@@ -22,6 +22,13 @@ public class EvenementHandler : Singleton<EvenementHandler>
     public Transform textContainer;
 
     public EventSystem EventSelected { get => eventSelected; set => eventSelected = value; }
+
+    protected override void Awake()
+    {
+        base.Awake();
+        if (_instance != this) { return; }
+        listeEvenements = scriptableEvent.events;
+    }
 
     public void StartEvent(int turn, List<Consequence> tags, System.Action<EventConsequence> callback)
     {
