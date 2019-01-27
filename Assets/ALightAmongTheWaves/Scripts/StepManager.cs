@@ -32,6 +32,9 @@ public class StepManager : Singleton<StepManager>
                 yield return new WaitForEndOfFrame();
             }
 
+            UpdateIncome();
+            EventConsequence(_eventConsequence);
+            _eventConsequence = null;
             //Update Resource
 
             //Evenement Consequence (Same Frame)
@@ -48,6 +51,48 @@ public class StepManager : Singleton<StepManager>
         }
     }
 
+    protected void UpdateIncome()
+    {
+        StorageManager.Instance.storage.food.Amount += Ship.Instance.shipEconomyIncome.foodIncome;
+        StorageManager.Instance.storage.wood.Amount += Ship.Instance.shipEconomyIncome.woodIncome;
+    }
+    protected void EventConsequence(EventConsequence ec)
+    {
+        StorageManager.Instance.storage.food.Amount += ec.foodChange;
+        StorageManager.Instance.storage.wood.Amount += ec.woodChange;
+        StorageManager.Instance.storage.population.Amount += ec.populationChange;
+        for (int i = 0; i < ec.tagChanges.Count; ++i)
+        {
+            if (ec.tagChanges[i].isAnAddition)
+            {
+                bool alreadyExist = false;
+                for(int j = 0; j < TagContainer.Instance.tags.Count; ++j)
+                {
+                    if (TagContainer.Instance.tags[j] == ec.tagChanges[i].tag)
+                    {
+                        alreadyExist = true;
+                        break;
+                    }
+                }
+                if (!alreadyExist)
+                {
+                    TagContainer.Instance.tags.Add(ec.tagChanges[i].tag);
+                }
+                
+            }
+            else
+            {
+                for (int j = 0; j < TagContainer.Instance.tags.Count; ++j)
+                {
+                    if (TagContainer.Instance.tags[j] == ec.tagChanges[i].tag)
+                    {
+                        TagContainer.Instance.tags.RemoveAt(j);
+                        break;
+                    }
+                }
+            }
+        }
+    }
     protected void OnEventEnded(EventConsequence ec)
     {
 
