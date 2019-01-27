@@ -89,12 +89,13 @@ public class EvenementHandler : Singleton<EvenementHandler>
     public void GetEvenementParPoids(List<EventSystem> ess) 
     {
         EventSystem selectedEvenement = new EventSystem();
-        int poidsRandom = UnityEngine.Random.Range(0, Poidtotal());
+        int poidsRandom = UnityEngine.Random.Range(0, Poidtotal(ess));
         foreach (EventSystem eve in ess)
         {
             if (poidsRandom <= eve.weight)
             {
                  EventSelected = eve;
+                return;
             }
 
             poidsRandom = poidsRandom - eve.weight;        
@@ -106,11 +107,11 @@ public class EvenementHandler : Singleton<EvenementHandler>
 
 
 
-    public int Poidtotal()
+    public int Poidtotal(List<EventSystem> ess)
     {
         int poids = 0;
 
-        foreach(EventSystem eve in listeEvenements)
+        foreach(EventSystem eve in ess)
         {
             poids += eve.weight;
         }
