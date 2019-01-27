@@ -11,6 +11,7 @@ public class GameUIManager : Singleton<GameUIManager>
     [SerializeField] protected TextMeshProUGUI food;
     [SerializeField] protected TextMeshProUGUI population;
     [SerializeField] protected TextMeshProUGUI inactivePopulation;
+    [SerializeField] protected TextMeshProUGUI currentStep;
     [SerializeField] protected Button nextStepButton;
     public void OnOptionCliked ()
     {
@@ -36,6 +37,7 @@ public class GameUIManager : Singleton<GameUIManager>
         food.text = StorageManager.Instance.storage.food.Amount + "/" + StorageManager.Instance.storage.food.MaxAmount;
         population.text = StorageManager.Instance.storage.population.Amount + "/" + StorageManager.Instance.storage.population.MaxAmount;
         inactivePopulation.text = "" + StorageManager.Instance.storage.population.freePopulation;
+        currentStep.text = "Current turn : " + TurnContainer.Instance.turnCounter.turn;
     }
 
     public void OnEventPart()

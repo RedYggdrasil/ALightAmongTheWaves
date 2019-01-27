@@ -114,6 +114,21 @@ public abstract class ListBasedResource<T> : AResource where T : new()
 public class Wood : IntBasedResource
 {
     public override ResourceType ResourceType { get { return ResourceType.Wood; } }
+    public override int Amount
+    {
+        get => base.Amount;
+        set
+        {
+            base.Amount = value;
+            if (_onStorageUpdate != null)
+            {
+                if (Amount <= 0)
+                {
+                    GameManager.Instance.GameOver();
+                }
+            }
+        }
+    }
 }
 [System.Serializable]
 public class Food : IntBasedResource
