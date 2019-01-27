@@ -27,7 +27,7 @@ public class EvenementHandler : Singleton<EvenementHandler>
     {
         base.Awake();
         if (_instance != this) { return; }
-        listeEvenements = scriptableEvent.events;
+        listeEvenements = scriptableEvent.GetDeepCopy();
     }
 
     public void StartEvent(int turn, List<Consequence> tags, System.Action<EventConsequence> callback)

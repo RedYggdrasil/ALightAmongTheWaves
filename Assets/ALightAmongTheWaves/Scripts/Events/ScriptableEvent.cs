@@ -16,7 +16,7 @@ namespace Assets.ALightAmongTheWaves.Scripts.Events
             List<EventSystem> eventSystems = new List<EventSystem>();
             for (int i = 0; i < events.Count; ++i)
             {
-                eventSystems[i] = events[i].GetDeepCopy();
+                eventSystems.Add(events[i].GetDeepCopy());
             }
             return eventSystems;
         }

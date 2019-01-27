@@ -27,7 +27,7 @@ public class EventSystem
         es.choice = new List<Choice>();
         for (int i = 0; i < choice.Count; ++i)
         {
-            es.choice[i] = choice[i].GetDeepCopy();
+            es.choice.Add(choice[i].GetDeepCopy());
         }
         return es;
     }

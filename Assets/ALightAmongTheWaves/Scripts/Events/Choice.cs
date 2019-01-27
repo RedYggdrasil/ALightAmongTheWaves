@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnityEngine;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -45,7 +46,7 @@ public class EventConsequence
         ec.tagChanges = new List<TagChange>();
         for (int i = 0; i < tagChanges.Count; ++i)
         {
-            ec.tagChanges[i] = tagChanges[i].GetDeepCopy();
+            ec.tagChanges.Add(tagChanges[i].GetDeepCopy());
         }
         return ec;
     }
