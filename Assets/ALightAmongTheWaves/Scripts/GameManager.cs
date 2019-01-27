@@ -45,7 +45,14 @@ public class GameManager : RedSpace.PersistentSingleton<GameManager>
 
 
     }
-
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
     public void LoadScene(GameManager.Scenes sceneToLoad)
     {
         SceneManager.LoadScene(((sceneToLoad == Scenes.Menu) ? menuName : shipLevel),LoadSceneMode.Single);
@@ -54,6 +61,7 @@ public class GameManager : RedSpace.PersistentSingleton<GameManager>
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        Debug.Log("OnSceneLoaded");
         if (scene.name == shipLevel)
         {
             OnShipLevelLoaded();
@@ -65,7 +73,9 @@ public class GameManager : RedSpace.PersistentSingleton<GameManager>
     }
     protected void OnShipLevelLoaded()
     {
+        Debug.Log("OnShipLevelLoaded");
         SaveManager.Instance.ApplySaveToGame();
+        StepManager.Instance.StartSteps();
     }
     protected void OnMenuLevelLoaded()
     {

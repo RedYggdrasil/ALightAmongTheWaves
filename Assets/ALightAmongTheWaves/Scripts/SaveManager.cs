@@ -55,13 +55,16 @@ public class SaveManager : PersistentSingleton<SaveManager>
     {
         StorageManager.Instance.SetStorage(_saveData.storage);
         TagContainer.Instance.SetTags(_saveData.progressionTags);
+        TurnContainer.Instance.SetTurnCounter(_saveData.turnCounter);
     }
     public void CreateNewSave()
     {
         _saveData = new SaveData();
         _saveData.storage = StorageManager.Instance.CreateAStartStorage();
-        Debug.Log(_saveData.storage);
+
         _saveData.progressionTags = TagContainer.Instance.CreateAStartTagList();
+
+        _saveData.turnCounter = TurnContainer.Instance.CreateATurnCounter();
     }
     public void Save()
     {
@@ -95,8 +98,12 @@ public class SaveManager : PersistentSingleton<SaveManager>
                     //Debug.Log("3");
                     if (aSave.progressionTags != null)
                     {
-                        //Debug.Log("return true");
-                        return true;
+                        //Debug.Log("4");
+                        if (aSave.turnCounter != null)
+                        {
+                            //Debug.Log("return true");
+                            return true;
+                        }
                     }
                 }
             }
@@ -119,5 +126,6 @@ public class SaveData
 {
     public Storage storage;
     public List<Consequence> progressionTags;
+    public TurnCounter turnCounter;
 
 }
