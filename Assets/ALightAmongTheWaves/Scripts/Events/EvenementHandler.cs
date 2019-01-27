@@ -70,7 +70,9 @@ public class EvenementHandler : Singleton<EvenementHandler>
             buttonInstanciate.GetComponent<Button>().onClick.AddListener( () => { ChoiseActivate(Int32.Parse(buttonInstanciate.name)); } );
             buttonInstanciate.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = eventSelected.choice[i].text;
             buttons.Add(buttonInstanciate);
+
         }
+        LayoutRebuilder.ForceRebuildLayoutImmediate((RectTransform)buttonsContainer);
     }
 
 

@@ -288,6 +288,11 @@ PrefabInstance:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3134505820808603905, guid: 8890a1e3174db38428516c9b6fe1caab,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3998857367777913011, guid: 8890a1e3174db38428516c9b6fe1caab,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -318,6 +323,11 @@ PrefabInstance:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3134505820347310107, guid: 8890a1e3174db38428516c9b6fe1caab,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3998857367115129257, guid: 8890a1e3174db38428516c9b6fe1caab,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -347,16 +357,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_isInputParsingRequired
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3134505820347310107, guid: 8890a1e3174db38428516c9b6fe1caab,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3134505820808603905, guid: 8890a1e3174db38428516c9b6fe1caab,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5240158489926836341, guid: 8890a1e3174db38428516c9b6fe1caab,
         type: 3}
@@ -422,6 +422,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_isInputParsingRequired
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1058863964764736222, guid: 8890a1e3174db38428516c9b6fe1caab,
+        type: 3}
+      propertyPath: m_fontSizeMin
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 7360562191916492384, guid: 8890a1e3174db38428516c9b6fe1caab,
         type: 3}
