@@ -16,7 +16,10 @@ public class EvenementHandler : Singleton<EvenementHandler>
     private System.Action<EventConsequence> callbackTemp;
     public Button buttonChoisePrefab;
     private List<GameObject> buttons = new List<GameObject>();
+    public Canvas canv;
 
+    public Transform buttonsContainer;
+    public Transform textContainer;
 
     public EventSystem EventSelected { get => eventSelected; set => eventSelected = value; }
 
@@ -69,6 +72,7 @@ public class EvenementHandler : Singleton<EvenementHandler>
         }
         buttons.Clear();
 
+        GameObject.Destroy(canv);
         callbackTemp(eventSelected.choice[i].eventConsequence);
     }
 
