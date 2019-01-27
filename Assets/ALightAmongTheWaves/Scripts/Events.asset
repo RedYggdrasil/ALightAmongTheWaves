@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   events:
   - id: 0
-    name: Accueil(Default)
-    about: "Un fr\xEAle esquif s'approche avec un membre en son sein. Il semble int\xE9ress\xE9
-      \xE0 monter \xE0 bord et pr\xE9pare d\xE9j\xE0 ses affaires."
+    name: Welcome(Default)
+    about: A frail skiff approaches with a member within it. He seems interested in
+      getting on board and is already preparing his stuff
     choice:
     - text: "Faire monter \xE0 bord"
       eventConsequence:
@@ -34,8 +34,8 @@ MonoBehaviour:
     tag: 0
   - id: 1
     name: "Accueil(Naufrag\xE9s)"
-    about: "Une personne ballot\xE9 entre les vagues se dirige dangereusement vers
-      la coque du navire et semble s'\xE9vanouir."
+    about: A person tossed between the waves heads dangerously towards the hull of
+      the ship and seems to faint.
     choice:
     - text: Venir en aide
       eventConsequence:
@@ -53,9 +53,8 @@ MonoBehaviour:
     tag: 0
   - id: 5
     name: Tempest
-    about: "De violentes rafales provoque une mer agit\xE9e. Au loin, un mur d'eau
-      commence \xE0 s'\xE9lever. Pas de doute, le bateau risque de perdre son bois
-      et de voir ses voiles d\xE9chir\xE9es si rien n'est fait."
+    about: Violent gusts cause a rough sea. No doubt, the boat may lose its wood and
+      see his sails torn if nothing is done.
     choice:
     - text: "Prot\xE9ger le bateau"
       eventConsequence:
@@ -72,9 +71,9 @@ MonoBehaviour:
     weight: 20
     tag: 0
   - id: 21
-    name: pluie
-    about: "Les nuages au dessus de la caravelle deviennent subitement grises. Quelques
-      instants plus tard, une forte averse s'abat sur l'oc\xE9an."
+    name: 'Heavy Rain '
+    about: The clouds above the caravel suddenly become gray. A few moments later,
+      a heavy downpour falls on the ocean.
     choice:
     - text: Continuer
       eventConsequence:
@@ -85,11 +84,11 @@ MonoBehaviour:
     weight: 0
     tag: 0
   - id: 12
-    name: "D\xE9bris"
-    about: "Une fr\xE9gate se dessine entre plusieurs r\xE9cifs. Ses voiles sont en
-      lambeaux, ses compartiments perc\xE9s par les rochers et ses vivres tombent
-      petit \xE0 petits dans l'eau. Nul ne sait comment il as atteri ici, mais tout
-      le monde conna\xEEt son lots de provisions dans sa cale."
+    name: Debris
+    about: A frigate is drawn between several reefs. Her sails are in tatters, her
+      compartments pierced by the rocks and her provisions are falling little by little
+      in the water. No one knows how he landed here, but everyone knows his lots of
+      provisions in his hold.
     choice:
     - text: "R\xE9cup\xE9rer les biens du vestige"
       eventConsequence:
@@ -106,11 +105,10 @@ MonoBehaviour:
     weight: 30
     tag: 0
   - id: 10
-    name: "Pr\xEAtre bon"
-    about: "Une personne v\xEAtue d'une robe aux couleurs ocres et d'un collier de
-      pattes de lapin s'approche \xE0 l'aide d'une barque. Il se l\xE8ve et crie dans
-      la direction du navire : \"L'aum\xF4ne pour un pauvre homme de foi\". Il insiste
-      malgr\xE9 le silence."
+    name: Good Priest
+    about: 'A person wearing an ocher-colored dress and a collar of rabbit''s feet
+      approaches with the help of a boat. He gets up and shouts in the direction of
+      the ship: "The alms for a poor man of faith". He insists despite the silence.'
     choice:
     - text: Donner de la monnaie
       eventConsequence:
@@ -127,11 +125,10 @@ MonoBehaviour:
     weight: 20
     tag: 0
   - id: 17
-    name: "Pr\xEAtre mauvais"
-    about: "Un homme mal ras\xE9 et habill\xE9 d'une tunique jaune et d'un collier
-      de nouille s'approche \xE0 l'aide d'un radeau. Il se l\xE8ve et brame dans la
-      direction du navire : \"L'aum\xF4ne pour un homme de foi\". Il insiste lourdement
-      malgr\xE9 le silence."
+    name: Bad Priest
+    about: 'An unshaven man dressed in a yellow tunic and a noodle collar approaches
+      with a raft. He gets up and slams in the direction of the ship: "The alms for
+      a man of faith". He insists heavily despite the silence.'
     choice:
     - text: Donner de la monnaie
       eventConsequence:
@@ -148,11 +145,10 @@ MonoBehaviour:
     weight: 10
     tag: 0
   - id: 15
-    name: Brouillard
-    about: "Une brume \xE9paisse entoure lentement le b\xE2timent. La flamme sur le
-      grand m\xE2t \xE0 beau servir de rep\xE8re pour les naufrag\xE9s et de lanterne
-      pour votre voyage, son utilit\xE9 vient de devenir d\xE9su\xE8te. A moins d'augmenter
-      la consommation de bois."
+    name: The Mist
+    about: A thick mist slowly surrounds the building. The flame on the main mast
+      serves as a landmark for shipwrecked and lantern for your trip, its usefulness
+      has become obsolete. Unless you increase the consumption of wood
     choice:
     - text: Utiliser plus de bois
       eventConsequence:
@@ -163,11 +159,10 @@ MonoBehaviour:
     weight: 20
     tag: 0
   - id: 4
-    name: Animal
-    about: "Depuis un galion coul\xE9, dont seul la poupe est hors de l'eau, un perroquet
-      \ solitaire se met \xE0 chanter un air bien triste. Il as pour s\xFBr besoin
-      d'\xEAtre recueilli. Voil\xE0 qui pourrait faire de vous un possible capitaine
-      de l\xE9gende !"
+    name: Pet
+    about: From a sunken galleon, of which only the stern is out of the water, a solitary
+      parrot begins to sing a very sad air. He certainly needs to be collected. That
+      could make you a captain of legend!
     choice:
     - text: Prendre le perroquet
       eventConsequence:
@@ -187,9 +182,8 @@ MonoBehaviour:
     tag: 0
   - id: 7
     name: Triangle
-    about: "Une zone t\xE9moins de myst\xE9rieuses disparitions se profilent au devant.
-      Echapper au triangle des murmures serait astucieux en passant par kes r\xE9cifs
-      saillants."
+    about: An area witnesses mysterious disappearances appear in front. Escaping the
+      Whispering Triangle would be nifty going through the salient reefs.
     choice:
     - text: Continuer tout droit
       eventConsequence:
@@ -206,13 +200,11 @@ MonoBehaviour:
     weight: 20
     tag: 0
   - id: 23
-    name: Charpentier
-    about: "Un son r\xE9gulier se fait entendre. Apr\xE8s quelques instants, un canot
-      surgit \xE0 tribord. Une personne aborde le navire : \"Oh\xE9 moussallon. Une
-      petite aide de la part du meilleur charpentier navale vous int\xE9resse ? Avec
-      moi \xE0 votre bord, la solitude dans l'oc\xE9an et votre phobie des fonds marins
-      ne seront plus qu'un mauvais souvenir, en votr.... en ma compagnie. H\xE9h\xE9!...euh....Oh\xE9e
-      ?\""
+    name: Carpenter
+    about: "A steady sound is heard. After a few moments, a boat rises to starboard.
+      One person approaches the ship: \"Oh, sailor, a little help from the best carpenter
+      in the world?\r\nWith me on board, loneliness in the ocean and your seabed phobia
+      will be nothing but a bad memory. \""
     choice:
     - text: Le faire accoster
       eventConsequence:
@@ -231,16 +223,13 @@ MonoBehaviour:
     weight: 0
     tag: 0
   - id: 22
-    name: Japonais
-    about: "Lorsque le soleil s'\xE9veille, un bateau \xE0 roues \xE0 aubes arrive
-      \xE0 toute allure vers la caravelle. Un homme accoutr\xE9 d'un bandeau blanc
-      sur sa t\xEAte sort sur le pont : \"Bien le bonjour, je suis Brian, le g\xE9rant
-      du premier yatai marain au monde. Mais vous n'avez sans doute jamais entendue
-      parl\xE9 de moi. Ce qui est logique, vu que j'ai oubli\xE9 mes ustensiles, je
-      n'ai pas encore eu l'occasion de pr\xE9parer mes sushis. Par ailleurs, si jamais
-      vous avez du bois ou du poisson \xE0 \xE9changez, j'aimerais vous porposer comment
-      r\xE9aliser de petits sushis. Ou alors, je peux vous donner des pousses venant
-      de mon pays natale... Ya t-il quelqu'un ?\""
+    name: Japaaaaan
+    about: 'When the sun wakes up, a paddle-wheeled boat arrives at full speed towards
+      the caravel. A man wearing a white band on his head comes out on the bridge:
+      "Good morning, I''m Brian, the manager of the first yatai marain in the world,
+      but you''ve probably heard about me before. Since I''m the best, if you ever
+      have wood or fish to exchange, I''d like to show you how to make small sushi,
+      or I can give you shoots from my native country ... Is there anyone ?"'
     choice:
     - text: Donner du bois
       eventConsequence:
