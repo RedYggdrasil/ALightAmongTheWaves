@@ -27,7 +27,7 @@ public class ShipPartSelectorUI : MonoBehaviour
         foreach (ShipModule shipModule in shipParts)
         {
             GameObject buttonGamebject = GameObject.Instantiate(partButtonPrefab.gameObject, panelPartTransform);
-            buttonGamebject.GetComponentInChildren<TextMeshProUGUI>().text = shipModule.name;
+            buttonGamebject.GetComponentInChildren<TextMeshProUGUI>().text = shipModule.moduleName;
 
             Button button = buttonGamebject.GetComponent<Button>();
 

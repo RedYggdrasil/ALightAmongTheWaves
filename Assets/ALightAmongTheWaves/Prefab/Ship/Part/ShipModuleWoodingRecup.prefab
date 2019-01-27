@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4867837940956643337}
   - component: {fileID: 7151354565889615288}
   m_Layer: 0
-  m_Name: ShipModuleFWooding
+  m_Name: ShipModuleWoodingRecup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -92,7 +92,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 601e2bfd9d6fde64f979ab1e203e8782, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moduleName: 
+  moduleName: Wood room
   unlockCondition: 0
   moduleSize: {x: 1, y: 1}
   moduleActions:
