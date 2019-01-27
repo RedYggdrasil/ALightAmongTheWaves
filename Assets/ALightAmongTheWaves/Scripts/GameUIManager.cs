@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using RedSpace;
 using TMPro;
 
@@ -10,6 +11,7 @@ public class GameUIManager : Singleton<GameUIManager>
     [SerializeField] protected TextMeshProUGUI food;
     [SerializeField] protected TextMeshProUGUI population;
     [SerializeField] protected TextMeshProUGUI inactivePopulation;
+    [SerializeField] protected Button nextStepButton;
     public void OnOptionCliked ()
     {
 
@@ -17,6 +19,10 @@ public class GameUIManager : Singleton<GameUIManager>
     public void OnConstructionClicked()
     {
 
+    }
+    public void OnNextStepClicked()
+    {
+        StepManager.Instance.OnNextStepClicked();
     }
     // Start is called before the first frame update
     void Start()
@@ -31,6 +37,20 @@ public class GameUIManager : Singleton<GameUIManager>
         population.text = StorageManager.Instance.storage.population.Amount + "/" + StorageManager.Instance.storage.population.MaxAmount;
         inactivePopulation.text = "" + StorageManager.Instance.storage.population.freePopulation;
     }
+
+    public void OnEventPart()
+    {
+        nextStepButton.interactable = false;
+    }
+    public void OnConstructionPart()
+    {
+        nextStepButton.interactable = true;
+    }
+    public void OnEndStepPart()
+    {
+        nextStepButton.interactable = false;
+    }
+
     protected void OnDestroy()
     {
         if (StorageManager.existInstance && StorageManager.Instance.storage != null)

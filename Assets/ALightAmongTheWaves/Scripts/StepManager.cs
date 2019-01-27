@@ -6,6 +6,7 @@ using RedSpace;
 public class StepManager : Singleton<StepManager>
 {
     protected EventConsequence _eventConsequence = null;
+    protected bool _waitingForNextStepClick = false;
     // Start is called before the first frame update
 
     public void StartSteps()
@@ -24,6 +25,8 @@ public class StepManager : Singleton<StepManager>
 
 
             //  Evenement
+
+            GameUIManager.Instance.OnEventPart();
             _eventConsequence = null;
             EvenementHandler.Instance.StartEvent(TurnContainer.Instance.turnCounter.turn, TagContainer.Instance.tags, OnEventEnded);
             while (_eventConsequence == null)
@@ -36,15 +39,17 @@ public class StepManager : Singleton<StepManager>
             Debug.Log(_eventConsequence);
             EventConsequence(_eventConsequence);
             _eventConsequence = null;
-            
 
+            _waitingForNextStepClick = true;
+            GameUIManager.Instance.OnConstructionPart();
             //  Gestion de la base
 
-            while (true)
+            while (_waitingForNextStepClick)
             {
                 yield return new WaitForEndOfFrame();
             }
 
+            GameUIManager.Instance.OnEndStepPart();
             ++TurnContainer.Instance.turnCounter.turn;
             SaveManager.Instance.Save();
         }
@@ -95,6 +100,10 @@ public class StepManager : Singleton<StepManager>
     protected void OnEventEnded(EventConsequence ec)
     {
         _eventConsequence = ec;
+    }
+    public void OnNextStepClicked()
+    {
+        _waitingForNextStepClick = false;
     }
     // Update is called once per frame
     void Update()
