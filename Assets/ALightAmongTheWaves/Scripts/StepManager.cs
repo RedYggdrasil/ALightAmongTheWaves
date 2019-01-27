@@ -37,7 +37,12 @@ public class StepManager : Singleton<StepManager>
             //Evenement Consequence (Same Frame)
 
             //  Gestion de la base
-            
+
+            while (true)
+            {
+                yield return new WaitForEndOfFrame();
+            }
+
             ++TurnContainer.Instance.turnCounter.turn;
             SaveManager.Instance.Save();
         }

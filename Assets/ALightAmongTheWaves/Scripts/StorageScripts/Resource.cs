@@ -46,7 +46,7 @@ public abstract class AResource : IResource
     [SerializeField] protected int _minAmount;
     [SerializeField] protected int _maxAmount;
     public virtual int MinAmount { get { return _minAmount; } set { _minAmount = Mathf.Clamp(value, 0, int.MaxValue); EnforceAmountBoudaries(); } }
-    public virtual int MaxAmount { get { return _maxAmount; } set { _maxAmount = Mathf.Clamp(value, 0, int.MaxValue); EnforceAmountBoudaries(); } }
+    public virtual int MaxAmount { get { return _maxAmount; } set { /*Debug.Log(value);*/ _maxAmount = Mathf.Clamp(value, 0, int.MaxValue); EnforceAmountBoudaries(); } }
 
     protected virtual void EnforceAmountBoudaries()
     {
@@ -104,7 +104,7 @@ public abstract class ListBasedResource<T> : AResource where T : new()
                     elements.Add( new T());
                 }
 
-                while (elements.Count > value);
+                while (elements.Count < value);
             }
             _onStorageUpdate?.Invoke();
         }
