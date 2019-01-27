@@ -44,6 +44,22 @@ public class StorageManager
             _storage.resources[i].SetResourceUpdateCallback(CallOnStorageUpdate);
         }
     }
+    public bool IsPossibleConsequences(EventConsequence ec)
+    {
+        if ((_storage.food.Amount + ec.foodChange) < 0)
+        {
+            return false;
+        }
+        if ((_storage.wood.Amount + ec.woodChange) < 0)
+        {
+            return false;
+        }
+        if ((_storage.population.Amount + ec.populationChange) < 0)
+        {
+            return false;
+        }
+        return true;
+    }
     public void CallOnStorageUpdate()
     {
         _storage.onStorageUpdate?.Invoke();

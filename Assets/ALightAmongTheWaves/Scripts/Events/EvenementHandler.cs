@@ -63,16 +63,24 @@ public class EvenementHandler : Singleton<EvenementHandler>
     {
         canv.gameObject.SetActive(true);
         textContainer.text = eventSelected.about;
+        bool atLeastOnePossibility = false;
         for (int i = 0;  i < eventSelected.choice.Count; ++i)
         {
+            bool possible = false;
             GameObject buttonInstanciate = GameObject.Instantiate(buttonChoisePrefab.gameObject, buttonsContainer);
             buttonInstanciate.name = "" + i;
             buttonInstanciate.GetComponent<Button>().onClick.AddListener( () => { ChoiseActivate(Int32.Parse(buttonInstanciate.name)); } );
             buttonInstanciate.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = eventSelected.choice[i].text;
+            possible = StorageManager.Instance.IsPossibleConsequences(eventSelected.choice[i].eventConsequence);
+            buttonInstanciate.GetComponent<Button>().interactable = possible;
+            if (possible) { atLeastOnePossibility = true; }
             buttons.Add(buttonInstanciate);
-
         }
         LayoutRebuilder.ForceRebuildLayoutImmediate((RectTransform)buttonsContainer);
+        if (!atLeastOnePossibility)
+        {
+            GameManager.Instance.GameOver();
+        }
     }
 
 

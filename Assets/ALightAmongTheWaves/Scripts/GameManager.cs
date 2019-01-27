@@ -81,6 +81,15 @@ public class GameManager : RedSpace.PersistentSingleton<GameManager>
     {
 
     }
+
+    public void GameOver()
+    {
+        StartCoroutine(GameOverPanel());
+    }
+    private IEnumerator GameOverPanel()
+    {
+        yield return null;
+    }
 }
 [System.Serializable]
 public class TagContainer
