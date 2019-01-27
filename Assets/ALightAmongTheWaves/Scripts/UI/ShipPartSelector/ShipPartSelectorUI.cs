@@ -63,7 +63,12 @@ public class ShipPartSelectorUI : MonoBehaviour
         foreach (ShipModule shipModule in shipParts)
         {
             Button shipPartButton = shipPartsButton[i++];
+
             shipPartButton.interactable = shipModule.IsPurchable(storage);
+
+            if (!shipModule.IsPurchable(storage))
+                shipPartButton.GetComponent<Image>().color = new Color(0.7f, 0.3f, 0.3f, 0.8f);
+            
         }
     }
 

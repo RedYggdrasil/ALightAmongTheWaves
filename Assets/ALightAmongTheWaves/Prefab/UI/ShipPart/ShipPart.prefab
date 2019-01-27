@@ -61,16 +61,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.32484868, g: 0.9433962, b: 0.36371022, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: ba7c2c591a4098d45ac698b749f833c0, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -141,6 +141,7 @@ MonoBehaviour:
   - {fileID: 7151354565889615288, guid: b2381d9ab9b32264887d29e57c414bac, type: 3}
   - {fileID: 7151354565889615288, guid: 63b43488619c45a43bb38ad8c06c8d17, type: 3}
   - {fileID: 7151354565889615288, guid: e3a5247dabc7b79469b147bacee94953, type: 3}
+  shipPartsButton: []
 --- !u!1 &1711627308779237111
 GameObject:
   m_ObjectHideFlags: 0
