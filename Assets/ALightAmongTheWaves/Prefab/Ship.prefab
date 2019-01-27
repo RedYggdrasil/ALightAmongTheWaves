@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5628642371073316949}
   - component: {fileID: 807937175343523271}
   - component: {fileID: 2657300556548535080}
+  - component: {fileID: 3530733518876017441}
   m_Layer: 0
   m_Name: Ship
   m_TagString: Untagged
@@ -75,7 +76,25 @@ MonoBehaviour:
   - {fileID: 4867837940956643339, guid: a42d41bca83d02749b0758552c3180fe, type: 3}
   - {fileID: 4867837940956643339, guid: 63b43488619c45a43bb38ad8c06c8d17, type: 3}
   - {fileID: 4867837940956643339, guid: e3a5247dabc7b79469b147bacee94953, type: 3}
-  modulePhantom: {fileID: 0}
+--- !u!114 &3530733518876017441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2926743890533172939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d37de4c481793634faf827743e691550, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gridShip: {fileID: 807937175343523271}
+  shipModuleDormitoryPrefab: {fileID: 4867837940956643339, guid: 79d5e1ace99acc149af52cdc8fc1f793,
+    type: 3}
+  shipModuleHold5Prefab: {fileID: 4867837940956643339, guid: 0dda4c434ac72654498880247e79f248,
+    type: 3}
+  shipModuleHold6Prefab: {fileID: 4867837940956643339, guid: 83d36baf94dbd79499e285ec07263fad,
+    type: 3}
 --- !u!1 &3581778209513973795
 GameObject:
   m_ObjectHideFlags: 0

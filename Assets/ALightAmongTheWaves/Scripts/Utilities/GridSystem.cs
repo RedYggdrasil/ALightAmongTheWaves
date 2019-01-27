@@ -5,11 +5,10 @@ using UnityEngine;
 
 public class GridSystem : MonoBehaviour
 {
-    public System.Action heightChangeEvent;
-
     public uint cellSize = 1;
     readonly public uint nbCellByLine = 17;
     public uint currentHeight { get; private set; } = 3;
+    public uint currentBuildableHeight { get; private set; } = 3;
 
     [HideInInspector]
     public Vector2 gridOrigin = new Vector2(0, 0);
@@ -29,7 +28,7 @@ public class GridSystem : MonoBehaviour
             for (int i = 0; i < currentHeight; ++i)
             {
                 grid.Add(new GameObject[nbCellByLine]);
-                AddOverlayLine();                
+                AddOverlayLine();
             }
     }
 
@@ -45,13 +44,19 @@ public class GridSystem : MonoBehaviour
     }
 
     [NaughtyAttributes.Button]
-    public void AddALine()
+    void AddALine()
     {
         currentHeight++;
         grid.Add(new GameObject[nbCellByLine]);
-        AddOverlayLine();
+    }
 
-        heightChangeEvent?.Invoke();
+    void AddBuildableLine()
+    {
+        if (currentBuildableHeight == currentHeight)
+            AddALine();
+
+        currentBuildableHeight++;
+        AddOverlayLine();
     }
 
     public Vector2Int GetCellIndexFromPosition(Vector2 position)
@@ -72,8 +77,8 @@ public class GridSystem : MonoBehaviour
 
     public void PutGameObjectInCellIndex(GameObject gameObject, Vector2Int cellIndex)
     {
-        if (!isInGrid(cellIndex))
-            throw new System.IndexOutOfRangeException();
+        //if (!isInGrid(cellIndex))
+        //    throw new System.IndexOutOfRangeException();
 
         gameObject.transform.SetParent(moduleContainer, false);
         gameObject.transform.localScale = Vector3.one;
@@ -82,20 +87,33 @@ public class GridSystem : MonoBehaviour
 
         Vector2Int moduleSize = gameObject.GetComponent<ShipModule>().moduleSize;
 
-        for(int i=0; i< moduleSize.x; ++i)
-            for(int j=0; j< moduleSize.y; ++j)
+        for (int j = 0; j < moduleSize.y; ++j)
+        {
+            if (!isInGrid(new Vector2Int(0, cellIndex.y + j)))
+                AddALine();
+
+            for (int i = 0; i < moduleSize.x; ++i)
             {
-                grid[cellIndex.y+j][cellIndex.x+i] = gameObject;
-                gridOverlay[cellIndex.y+j][cellIndex.x+i].SetActive(false);
+                grid[cellIndex.y + j][cellIndex.x + i] = gameObject;
+
+                if (cellIndex.y + j < currentBuildableHeight)
+                    gridOverlay[cellIndex.y + j][cellIndex.x + i].SetActive(false);
             }
+        }
+
+        if (CanAddBuildableLine())
+        {
+            AddBuildableLine();
+        }
+
     }
 
     public void PutGameObjectOnPosition(GameObject gameObject, Vector2 position)
     {
         Vector2Int cellIndex = GetCellIndexFromPosition(position);
 
-        if (!isInGrid(cellIndex))
-            throw new System.IndexOutOfRangeException();
+        //if (!isInGrid(cellIndex))
+        //    throw new System.IndexOutOfRangeException();
 
         gameObject.transform.SetParent(moduleContainer, false);
         gameObject.transform.localScale = Vector3.one;
@@ -104,12 +122,26 @@ public class GridSystem : MonoBehaviour
 
         Vector2Int moduleSize = gameObject.GetComponent<ShipModule>().moduleSize;
 
-        for (int i = 0; i < moduleSize.x; ++i)
-            for (int j = 0; j < moduleSize.y; ++j)
+
+        for (int j = 0; j < moduleSize.y; ++j)
+        {
+            if(!isInGrid(new Vector2Int(0, cellIndex.y + j)))
+                AddALine();
+
+            for (int i = 0; i < moduleSize.x; ++i)
             {
                 grid[cellIndex.y + j][cellIndex.x + i] = gameObject;
-                gridOverlay[cellIndex.y + j][cellIndex.x + i].SetActive(false);
+
+                if(cellIndex.y + j < currentBuildableHeight)
+                    gridOverlay[cellIndex.y + j][cellIndex.x + i].SetActive(false);
             }
+        }
+
+        if (CanAddBuildableLine())
+        {
+            AddBuildableLine();
+        }
+            
     }
 
     public GameObject GetGameObjectFormCellIndex(Vector2Int cellIndex)
@@ -122,17 +154,35 @@ public class GridSystem : MonoBehaviour
 
     public bool CanPLaceModule(Vector2Int modulePosition, Vector2Int moduleSize)
     {
-        bool canPlaceModule = true;
+        if (modulePosition.y >= currentBuildableHeight)
+            return false;
 
         for (int i = 0; i < moduleSize.x; ++i)
             for (int j = 0; j < moduleSize.y; ++j)
             {
-                canPlaceModule = GetGameObjectFormCellIndex(new Vector2Int(modulePosition.x + i, modulePosition.y + j)) == null;
-                if (!canPlaceModule)
+                if (!IsInBoat( new Vector2Int(modulePosition.x + i, modulePosition.y)))
+                    return false;
+                    
+                if (GetGameObjectFormCellIndex(new Vector2Int(modulePosition.x + i, modulePosition.y + j)) != null)
                     return false;
             }
 
-        return canPlaceModule;
+        return true;
+    }
+
+    public bool CanAddBuildableLine()
+    {
+        bool lineFull = true;
+
+        Vector2Int boatArea = BoatAreaInLine(currentBuildableHeight - 1);
+
+        for (int i = boatArea.x; i <= boatArea.y; ++i)
+        {
+            if (GetGameObjectFormCellIndex(new Vector2Int(i, (int)currentBuildableHeight - 1)) == null)
+                return false;
+        }
+
+        return true;
     }
 
     //-------------------------------------------------------------------------------//
@@ -177,6 +227,16 @@ public class GridSystem : MonoBehaviour
         return index.x >= boatArea.x && index.x <= boatArea.y;
     }
 
+    public bool IsInBoat(Vector2Int cellIndex)
+    {
+        if (!isInGrid(cellIndex))
+            return false;
+
+        Vector2Int boatArea = BoatAreaInLine((uint)cellIndex.y);
+
+        return cellIndex.x >= boatArea.x && cellIndex.x <= boatArea.y;
+    }
+
     //---------------------------------------------------------------------------------//
 
     void AddOverlayLine()
@@ -196,6 +256,9 @@ public class GridSystem : MonoBehaviour
             gridOverlay[(int)height][j].transform.localScale = Vector3.one;
 
             gridOverlay[(int)height][j].transform.position = GetPositionForCellIndex(new Vector2Int(j, (int)height));
+
+            if (GetGameObjectFormCellIndex(new Vector2Int(j, (int)height)) != null )
+                gridOverlay[(int)height][j].SetActive(false);
         }
     }
 }

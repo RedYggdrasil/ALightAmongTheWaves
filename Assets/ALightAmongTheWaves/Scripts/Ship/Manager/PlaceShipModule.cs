@@ -9,7 +9,7 @@ public class PlaceShipModule : MonoBehaviour
 
     public GameObject[] modulePrefab = new GameObject[4];
 
-    public GameObject modulePhantom;
+    GameObject modulePhantom;
 
     // Start is called before the first frame update
     void Start()

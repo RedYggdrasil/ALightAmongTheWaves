@@ -658,6 +658,11 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3530733518876017441, guid: 0054713bc300c8246b0291cb1603a2ab,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5408301282564161969, guid: 0054713bc300c8246b0291cb1603a2ab, type: 3}
     - {fileID: 6721570137579602426, guid: 0054713bc300c8246b0291cb1603a2ab, type: 3}
