@@ -69,8 +69,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 17c775e6799779a45955b5b6707bbb4d, type: 3}
-  m_Color: {r: 1, g: 0.3915094, b: 0.9938871, a: 1}
+  m_Sprite: {fileID: 21300000, guid: c2f00cd99b2fa9043ba74428f7a44730, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -92,6 +92,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 601e2bfd9d6fde64f979ab1e203e8782, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moduleName: 
+  unlockCondition: 0
   moduleSize: {x: 1, y: 1}
-  moduleAction: 0
-  ActionValue: 0
+  moduleActions: []
+  cost:
+    woodCost: 0
+    foodCost: 0
+    freePeopleCost: 0
