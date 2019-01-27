@@ -5,6 +5,7 @@ using RedSpace;
 
 public class StepManager : Singleton<StepManager>
 {
+    public SpriteRenderer[] backgrounds;
     protected EventConsequence _eventConsequence = null;
     protected bool _waitingForNextStepClick = false;
     // Start is called before the first frame update
@@ -22,7 +23,11 @@ public class StepManager : Singleton<StepManager>
         //  Save
         while (true)
         {
-
+            int selectedBackGround = Random.Range(0, backgrounds.Length - 1);
+            for (int i = 0; i < backgrounds.Length; ++i)
+            {
+                backgrounds[i].gameObject.SetActive(i == selectedBackGround);
+            }
 
             //  Evenement
 
