@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class ShipModule : MonoBehaviour
 {
+    public string moduleName = "";
+
     public Consequence unlockCondition;
 
     public Vector2Int moduleSize = new Vector2Int(1,1);
@@ -49,16 +51,26 @@ public class ShipModule : MonoBehaviour
         return false;
     }
 
+    public bool IsPurchable(Storage storage)
+    {
+        if (storage.wood.Amount >= cost.woodCost && storage.population.freePopulation >= cost.freePeopleCost)
+            return true;
+
+        return false;
+    }
+
     public void ActivateModule()
     {
         _ship = Ship.Instance;
 
-        foreach(ModuleAction action in moduleActions)
+        StorageManager.Instance.GetStorageRefence().population.occupedPopulation += cost.freePeopleCost;
+
+        foreach (ModuleAction action in moduleActions)
         {
             switch (action.moduleAction)
             {
                 case ShipModuleAction.kPopulationMax:
-                    StorageManager.Instance.storage.population.MaxAmount += action.actionValue;
+                    StorageManager.Instance.GetStorageRefence().population.MaxAmount += action.actionValue;
                     break;
 
                 case ShipModuleAction.kFoodIncome:
@@ -66,7 +78,7 @@ public class ShipModule : MonoBehaviour
                     break;
 
                 case ShipModuleAction.kFoodMax:
-                    StorageManager.Instance.storage.food.MaxAmount += action.actionValue;
+                    StorageManager.Instance.GetStorageRefence().food.MaxAmount += action.actionValue;
                     break;
 
                 case ShipModuleAction.kWoodIncome:
@@ -74,7 +86,7 @@ public class ShipModule : MonoBehaviour
                     break;
 
                 case ShipModuleAction.kWoodMax:
-                    StorageManager.Instance.storage.wood.MaxAmount += action.actionValue;
+                    StorageManager.Instance.GetStorageRefence().wood.MaxAmount += action.actionValue;
                     break;
 
                 case ShipModuleAction.kProductionBonus:
@@ -89,12 +101,14 @@ public class ShipModule : MonoBehaviour
         if (_ship == null)
             return;
 
+        StorageManager.Instance.GetStorageRefence().population.occupedPopulation -= cost.freePeopleCost;
+
         foreach (ModuleAction action in moduleActions)
         {
             switch (action.moduleAction)
             {
                 case ShipModuleAction.kPopulationMax:
-                    StorageManager.Instance.storage.population.MaxAmount -= action.actionValue;
+                    StorageManager.Instance.GetStorageRefence().population.MaxAmount -= action.actionValue;
                     
                     break;
 
@@ -103,7 +117,7 @@ public class ShipModule : MonoBehaviour
                     break;
 
                 case ShipModuleAction.kFoodMax:
-                    StorageManager.Instance.storage.food.MaxAmount -= action.actionValue;
+                    StorageManager.Instance.GetStorageRefence().food.MaxAmount -= action.actionValue;
                     break;
 
                 case ShipModuleAction.kWoodIncome:
@@ -111,7 +125,7 @@ public class ShipModule : MonoBehaviour
                     break;
 
                 case ShipModuleAction.kWoodMax:
-                    StorageManager.Instance.storage.wood.MaxAmount -= action.actionValue;
+                    StorageManager.Instance.GetStorageRefence().wood.MaxAmount -= action.actionValue;
                     break;
 
                 case ShipModuleAction.kProductionBonus:

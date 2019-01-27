@@ -58,6 +58,7 @@ public class Ship : Singleton<Ship>
     public GridSystem gridShip;
 
     public List<ShipModule> shipParts = new List<ShipModule>();
+    public List<ShipModule> disableShipParts = new List<ShipModule>();
 
     public GameObject shipModuleDormitoryPrefab, shipModuleHold5Prefab, shipModuleHold6Prefab, shipModuleMattPrefab, shipModuleMattFireSpotPrefab;
 
@@ -72,6 +73,7 @@ public class Ship : Singleton<Ship>
 
     public ShipIncomeProduction shipEconomyIncome;
 
+    Storage _storage;
     // Start is called before the first frame update
     void Start()
     {
@@ -92,11 +94,43 @@ public class Ship : Singleton<Ship>
         gridShip.PutGameObjectInCellIndex(shipMattFireSpotGO, new Vector2Int((int)(gridShip.nbCellByLine * 0.5f), 3));
 
         gridShip.newBuildableLineAddedEvent += ShipMattGrow;
+
+        _storage = StorageManager.Instance.GetStorageRefence();
+        _storage.onStorageUpdate += StorageUpdate;
     }
 
     private void OnDestroy()
     {
         gridShip.newBuildableLineAddedEvent -= ShipMattGrow;
+    }
+
+    private void StorageUpdate()
+    {
+        if(_storage.population.freePopulation < 0)
+        {
+            while (_storage.population.freePopulation < 0) //need to equilibrate
+            {
+                DeactivateRandomModule();
+            }
+        }
+        else if(disableShipParts.Count > 0 && _storage.population.freePopulation > 0)
+        {
+            bool haveFullAShipPart = false;
+            do
+            {
+                haveFullAShipPart = false;
+
+                for (int i = disableShipParts.Count - 1; i >= 0; --i)
+                {
+                    if (disableShipParts[i].cost.freePeopleCost <= _storage.population.freePopulation)
+                    {
+                        disableShipParts[i].ActivateModule();
+                        haveFullAShipPart = true;
+                    }
+                }
+            }
+            while (haveFullAShipPart && disableShipParts.Count > 0);
+        }
     }
 
     void ShipMattGrow()
@@ -122,4 +156,13 @@ public class Ship : Singleton<Ship>
             shipModule.Boost(actionValue);
         }
     }
+
+    public void DeactivateRandomModule()
+    {
+        ShipModule shipModule = shipParts[(int)UnityEngine.Random.Range(0, shipParts.Count - 0.01f)]; 
+        shipModule.DeactivateModule();
+        disableShipParts.Add(shipModule);
+    }
+
+    
 }

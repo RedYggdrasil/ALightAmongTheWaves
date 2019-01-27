@@ -39,7 +39,12 @@ public class ShipPartSelectorUI : MonoBehaviour
             });
         }
 
-        menuButton.onClick.AddListener(() => panelPartTransform.gameObject.SetActive(!panelPartTransform.gameObject.activeSelf));
+        menuButton.onClick.AddListener(() => {
+            panelPartTransform.gameObject.SetActive(!panelPartTransform.gameObject.activeSelf);
+            if (panelPartTransform.gameObject.activeSelf)
+                UpdateAvailableByCost();
+            }
+            );
 
         UpdateUnlockShipPart();
         _tagContainer.onTagsUpdate += UpdateUnlockShipPart;
@@ -48,6 +53,18 @@ public class ShipPartSelectorUI : MonoBehaviour
     private void OnDestroy()
     {
         _tagContainer.onTagsUpdate += UpdateUnlockShipPart;
+    }
+
+    void UpdateAvailableByCost()
+    {
+        Storage storage = StorageManager.Instance.GetStorageRefence();
+
+        int i = 0;
+        foreach (ShipModule shipModule in shipParts)
+        {
+            Button shipPartButton = shipPartsButton[i++];
+            shipPartButton.interactable = shipModule.IsPurchable(storage);
+        }
     }
 
     void UpdateUnlockShipPart()
