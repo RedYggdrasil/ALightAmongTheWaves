@@ -31,6 +31,10 @@ public class StorageManager
     public void SetStorage(Storage aStorage)
     {
         _storage = aStorage;
+        for (int i = 0; i < _storage.resources.Length; ++i)
+        {
+            _storage.resources[i].SetResourceUpdateCallback(_storage.onStorageUpdate);
+        }
     }
     public Storage CreateAStartStorage()
     {
@@ -57,6 +61,8 @@ public class StorageManager
 [System.Serializable]
 public class Storage
 {
+    public delegate void OnStorageUpdate();
+    public OnStorageUpdate onStorageUpdate;
     public IResource[] resources;
 
     public Food food;
